@@ -1,0 +1,19 @@
+version: '3.6'
+
+volumes:
+  data-pg:
+    name: data-pg
+
+services:
+  pgdb:
+    container_name: pgdb
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_USER: "app_user"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "app_db"
+    volumes:
+      - "data-pg:/var/lib/postgresql/data"

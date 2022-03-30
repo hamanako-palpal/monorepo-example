@@ -1,6 +1,6 @@
 .gradle
 /build/
-
+/db/drivers/
 # Ignore Gradle GUI config
 gradle-app.setting
 

@@ -1,0 +1,11 @@
+version: '3.6'
+
+services:
+  migrate:
+    container_name: migrate
+    image: mybatis/migrations
+    volumes:
+      - "./db:/migration"
+    depends_on:
+      - pgdb
+    command: ["up"]
