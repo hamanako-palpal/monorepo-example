@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.pal2hmnk.example.generated.grpc.services;
+
+option java_multiple_files = true;
+
+service Users {
+  rpc FindUserInfo(UserInputData) returns (UserInfo) {}
+}
+
+message UserId {
+  int32 id = 1;
+}
+
+message UserInputData {
+  string name = 1;
+}
+
+message UserInfo {
+  int32 id = 1;
+  string name = 2;
+}

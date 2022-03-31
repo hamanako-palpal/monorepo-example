@@ -1,6 +1,9 @@
 .gradle
 /build/
 /db/drivers/
+/src/kotlin/.idea/
+/src/kotlin/.gradle
+/src/kotlin/libs/*/*/build/
 # Ignore Gradle GUI config
 gradle-app.setting
 
