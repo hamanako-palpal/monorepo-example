@@ -7,6 +7,8 @@ plugins {
 val kotlinVersion: String by extra("1.5.31")
 val jacksonKotlinVersion: String by extra("2.13.2")
 
+val javaxAnnotationVersion: String by extra("1.3.2")
+
 val grpcVersion: String by extra("1.39.0")
 val grpcKotlinVersion: String by extra("1.2.0")
 val protobufVersion: String by extra("3.19.1")
