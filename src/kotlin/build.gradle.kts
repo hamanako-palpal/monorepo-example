@@ -9,6 +9,11 @@ val jacksonKotlinVersion: String by extra("2.13.2")
 
 val javaxAnnotationVersion: String by extra("1.3.2")
 
+val mybatisVersion: String by extra("3.5.7")
+val mybatisDynamicVersion: String by extra("1.3.0")
+val mybatisGeneratorVersion: String by extra("1.4.0")
+val postgresClientVersion: String by extra("42.3.1")
+
 val grpcVersion: String by extra("1.39.0")
 val grpcKotlinVersion: String by extra("1.2.0")
 val protobufVersion: String by extra("3.19.1")

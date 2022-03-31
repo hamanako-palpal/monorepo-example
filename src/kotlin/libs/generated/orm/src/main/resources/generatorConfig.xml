@@ -1,0 +1,20 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="kotlin" targetRuntime="MyBatis3Kotlin">
+        <plugin type="plugin.NonNullPlugin"/>
+        <jdbcConnection
+                driverClass="org.postgresql.Driver"
+                connectionURL="jdbc:postgresql://localhost:5432/app_db"
+                userId="app_user"
+                password="password">
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.pal2hmnk.example.generated.orm.model" targetProject="src/main/kotlin"/>
+        <javaClientGenerator targetPackage="com.pal2hmnk.example.generated.orm.mapper" targetProject="src/main/kotlin"/>
+
+        <table tableName="users"/>
+        <table tableName="shops"/>
+        <table tableName="orders"/>
+    </context>
+</generatorConfiguration>
