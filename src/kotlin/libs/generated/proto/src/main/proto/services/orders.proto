@@ -6,7 +6,7 @@ import "services/shops.proto";
 
 option java_multiple_files = true;
 
-service Orders {
+service OrderService {
   rpc FindOrderHistory (UserId) returns (OrderHistory) {}
 }
 

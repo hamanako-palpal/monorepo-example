@@ -9,6 +9,8 @@ val jacksonKotlinVersion: String by extra("2.13.2")
 
 val javaxAnnotationVersion: String by extra("1.3.2")
 
+val kodeinVersion: String by extra("4.0.0")
+
 val mybatisVersion: String by extra("3.5.7")
 val mybatisDynamicVersion: String by extra("1.3.0")
 val mybatisGeneratorVersion: String by extra("1.4.0")
