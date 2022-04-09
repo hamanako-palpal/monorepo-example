@@ -1,22 +1,27 @@
 syntax = "proto3";
 
 package com.pal2hmnk.example.generated.grpc.services;
+
 import "services/users.proto";
 import "services/shops.proto";
 
 option java_multiple_files = true;
 
 service OrderService {
-  rpc FindOrderHistory (UserId) returns (OrderHistory) {}
+  rpc FindOrderHistory (UserId) returns (OrderHistoryList) {}
 }
 
 message OrderRequest {
   int32 id = 1;
 }
 
+message OrderHistoryList {
+  repeated OrderHistory orderHistory = 1;
+}
+
 message OrderHistory {
   int32 shopId = 1;
-  repeated string ordered = 2;
+  string ordered = 2;
 }
 
 message OrderInfo {
