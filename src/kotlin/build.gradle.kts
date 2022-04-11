@@ -11,6 +11,9 @@ val javaxAnnotationVersion: String by extra("1.3.2")
 
 val kodeinVersion: String by extra("4.0.0")
 
+val graphqlDgsVersion: String by extra("4.9.2")
+val springBootVersion: String by extra("2.5.6")
+
 val mybatisVersion: String by extra("3.5.7")
 val mybatisDynamicVersion: String by extra("1.3.0")
 val mybatisGeneratorVersion: String by extra("1.4.0")

@@ -7,10 +7,6 @@ import "services/shops.proto";
 
 option java_multiple_files = true;
 
-service OrderService {
-  rpc FindOrderHistory (UserId) returns (OrderHistoryList) {}
-}
-
 message OrderRequest {
   int32 id = 1;
 }
@@ -21,7 +17,8 @@ message OrderHistoryList {
 
 message OrderHistory {
   int32 shopId = 1;
-  string ordered = 2;
+  string name = 2;
+  string ordered = 3;
 }
 
 message OrderInfo {

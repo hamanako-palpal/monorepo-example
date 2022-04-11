@@ -8,7 +8,7 @@ type Mutation {
 
 scalar DateTime
 
-type Account {
+type User {
     id: Int!
     name: String!
 }
@@ -18,11 +18,14 @@ type Shop {
   name: String!
 }
 
-type Order {
-    id: Int!
-    account: Account!
+type OrderHistory {
     shop: Shop!
     ordered: String!
+}
+
+type Order {
+    user: User!
+    orders: [OrderHistory!]!
 }
 
 type Result {
