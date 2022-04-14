@@ -2,12 +2,12 @@ plugins {
     id("application")
 }
 application {
-    mainClass.set("com.pal2hmnk.example.order.RootApplicationKt")
+    mainClass.set("com.pal2hmnk.example.shop.RootApplicationKt")
 }
 val jar by tasks.getting(Jar::class) {
     archiveFileName.set("app.jar")
     manifest {
-        attributes["Main-Class"] = "com.pal2hmnk.example.order.RootApplicationKt"
+        attributes["Main-Class"] = "com.pal2hmnk.example.shop.RootApplicationKt"
     }
     from(
         configurations.compile.get().map {
