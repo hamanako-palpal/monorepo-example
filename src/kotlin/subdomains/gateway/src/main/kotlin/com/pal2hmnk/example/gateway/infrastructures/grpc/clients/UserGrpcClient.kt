@@ -1,8 +1,8 @@
-package com.pal2hmnk.example.gateway.infrastructures.grpc
+package com.pal2hmnk.example.gateway.infrastructures.grpc.clients
 
 import com.pal2hmnk.example.gateway.domains.User
-import com.pal2hmnk.example.gateway.infrastructures.GrpcChannelFactory
-import com.pal2hmnk.example.gateway.infrastructures.GrpcClient
+import com.pal2hmnk.example.gateway.infrastructures.grpc.GrpcChannelFactory
+import com.pal2hmnk.example.gateway.infrastructures.grpc.GrpcClient
 import com.pal2hmnk.example.generated.grpc.services.UserRequest
 import com.pal2hmnk.example.generated.grpc.services.UserServiceGrpcKt
 import org.springframework.stereotype.Component

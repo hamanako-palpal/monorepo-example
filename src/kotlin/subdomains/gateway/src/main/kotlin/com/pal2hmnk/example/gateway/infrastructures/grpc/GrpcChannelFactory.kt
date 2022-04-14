@@ -1,7 +1,7 @@
-package com.pal2hmnk.example.gateway.infrastructures
+package com.pal2hmnk.example.gateway.infrastructures.grpc
 
-import com.pal2hmnk.example.gateway.infrastructures.grpc.ShopGrpcClient
-import com.pal2hmnk.example.gateway.infrastructures.grpc.UserGrpcClient
+import com.pal2hmnk.example.gateway.infrastructures.grpc.clients.ShopGrpcClient
+import com.pal2hmnk.example.gateway.infrastructures.grpc.clients.UserGrpcClient
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
 import kotlin.reflect.KProperty

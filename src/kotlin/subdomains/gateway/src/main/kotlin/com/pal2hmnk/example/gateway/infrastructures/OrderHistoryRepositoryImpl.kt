@@ -4,7 +4,7 @@ import com.pal2hmnk.example.gateway.domains.OrderHistory
 import com.pal2hmnk.example.gateway.domains.OrderHistoryRepository
 import com.pal2hmnk.example.gateway.domains.Shop
 import com.pal2hmnk.example.gateway.domains.UserId
-import com.pal2hmnk.example.gateway.infrastructures.grpc.ShopGrpcClient
+import com.pal2hmnk.example.gateway.infrastructures.grpc.clients.ShopGrpcClient
 import com.pal2hmnk.example.util.DateConverter
 import org.springframework.stereotype.Service
 

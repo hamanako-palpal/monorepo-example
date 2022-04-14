@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.gateway.infrastructures
+package com.pal2hmnk.example.gateway.infrastructures.grpc
 
 import io.grpc.ManagedChannel
 import java.io.Closeable
