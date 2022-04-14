@@ -10,15 +10,15 @@ import com.pal2hmnk.example.user.domains.UserRepository
 import com.pal2hmnk.example.user.infrastructures.UserRepositoryImpl
 import com.pal2hmnk.example.user.infrastructures.persistence.UserSqlSessionProvider
 import com.pal2hmnk.example.user.presentations.UserController
-import com.pal2hmnk.example.user.usecases.UserInteractor
-import com.pal2hmnk.example.user.usecases.UserScenario
+import com.pal2hmnk.example.user.usecases.FindByNameImpl
+import com.pal2hmnk.example.user.usecases.FindByName
 import io.grpc.BindableService
 
 fun main() {
     val kodein = Kodein {
         bind<SqlSessionProvider>() with singleton { UserSqlSessionProvider() }
         bind<UserRepository>() with singleton { UserRepositoryImpl(instance()) }
-        bind<UserScenario>() with singleton { UserInteractor(instance()) }
+        bind<FindByName>() with singleton { FindByNameImpl(instance()) }
         bind<List<BindableService>>() with singleton { listOf(UserController(instance())) }
     }
     GrpcServerBase(kodein.instance()).runServer()

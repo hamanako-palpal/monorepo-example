@@ -58,6 +58,7 @@ project(":subdomains:service-shop") {
         val kodeinVersion: String by project
         val mybatisDynamicVersion: String by project
 
+        implementation(project(":libs:util"))
         implementation(project(":libs:generated:proto"))
         implementation(project(":libs:generated:orm"))
         implementation(project(":subdomains:shared"))

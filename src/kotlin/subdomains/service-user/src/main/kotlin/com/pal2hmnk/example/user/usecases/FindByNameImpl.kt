@@ -4,9 +4,9 @@ import com.pal2hmnk.example.user.domains.Name
 import com.pal2hmnk.example.user.domains.User
 import com.pal2hmnk.example.user.domains.UserRepository
 
-class UserInteractor(
+class FindByNameImpl(
     private val repo: UserRepository,
-): UserScenario {
-    override fun findByName(name: String): User =
-        repo.findBy(Name.of(name))
+): FindByName {
+    override fun exec(params: String): User =
+        repo.findBy(Name(params))
 }
