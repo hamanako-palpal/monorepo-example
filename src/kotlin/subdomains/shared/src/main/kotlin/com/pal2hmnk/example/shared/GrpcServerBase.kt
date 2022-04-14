@@ -9,16 +9,14 @@ class GrpcServerBase(
     private var port: Int? = null
     lateinit var server: io.grpc.Server
 
-    fun runServer() {
-        initialize()
+    fun runServer(overridePort: Int? = null) {
+        initialize(overridePort)
         start()
         blockUntilShutdown()
     }
 
-    private fun initialize(): GrpcServerBase {
-        port = System.getenv("PORT")?.toInt()
-            ?: 50051
-//            ?: throw Exception("Can't find Server Port.")
+    private fun initialize(overridePort: Int? = null): GrpcServerBase {
+        port = overridePort ?: System.getenv("PORT")?.toInt() ?: throw Exception("Can't find Server Port.")
         server = ServerBuilder.forPort(port!!).apply {
             services.forEach { this.addService(it) }
         }.build()
