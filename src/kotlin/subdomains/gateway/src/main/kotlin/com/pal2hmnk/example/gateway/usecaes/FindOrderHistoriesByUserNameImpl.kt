@@ -8,13 +8,13 @@ import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Service
 
 @Service
-class OrderHistoryInteractor(
+class FindOrderHistoriesByUserNameImpl(
     private val userRepository: UserRepository,
     private val orderHistoryRepository: OrderHistoryRepository,
-) : OrderHistoryScenario {
-    override fun findByName(name: String): OrderHistoryOutputData =
+) : FindOrderHistoriesByUserName {
+    override fun exec(params: String): OrderHistoryOutputData =
         runBlocking {
-            val user = userRepository.findUserInfo(name).let { UserOutput(it.id, it.name) }
+            val user = userRepository.findUserInfo(params).let { UserOutput(it.id, it.name) }
             val orderHistory = orderHistoryRepository.findBy(UserId(user.id))
                 .map { OrderHistoryOutput(it.shop.id, it.shop.name, DateConverter.toStr(it.Ordered)) }
             OrderHistoryOutputData(user, orderHistory)

@@ -15,6 +15,7 @@ project(":subdomains:gateway") {
         implementation(project(":libs:util"))
         implementation(project(":libs:generated:proto"))
         implementation(project(":libs:generated:graphql"))
+        implementation(project(":subdomains:shared"))
 
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}")
 
