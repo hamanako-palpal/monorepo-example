@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.pal2hmnk.example.generated.grpc.services;
+
+import "services/users.proto";
+import "services/shops.proto";
+import "services/orders.proto";
+
+service ShopService {
+  rpc FindOrderHistory (UserId) returns (OrderHistoryList) {}
+}

@@ -51,3 +51,22 @@ allprojects {
         }
     }
 }
+tasks.register("copyProto", Copy::class) {
+    from("../../schemas/proto")
+    into("libs/generated/proto/src/main/proto/services")
+    mustRunAfter("cleanDirs")
+}
+tasks.register("copyGraphql", Copy::class) {
+    from("../../schemas/graphql")
+    into("subdomains/gateway/src/main/resources/schema")
+    mustRunAfter("cleanDirs")
+}
+tasks.register("cleanDirs", Delete::class) {
+    delete("libs/generated/proto/src/main/proto/services")
+    delete("subdomains/gateway/src/main/resources/schema")
+}
+tasks.register("withSchemaChange") {
+    dependsOn(tasks.named("copyProto"))
+    dependsOn(tasks.named("copyGraphql"))
+    dependsOn(tasks.named("cleanDirs"))
+}

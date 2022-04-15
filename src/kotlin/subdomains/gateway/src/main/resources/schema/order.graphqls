@@ -1,0 +1,33 @@
+type Query {
+    orderHistory(name: String!): Order
+}
+
+type Mutation {
+    order(userName: String!, shopName: String!): Result
+}
+
+scalar DateTime
+
+type User {
+    id: Int!
+    name: String!
+}
+
+type Shop {
+  id: Int!
+  name: String!
+}
+
+type OrderHistory {
+    shop: Shop!
+    ordered: String!
+}
+
+type Order {
+    user: User!
+    orders: [OrderHistory!]!
+}
+
+type Result {
+    status: Int!
+}
