@@ -40,6 +40,8 @@ project(":subdomains:service-user") {
         val grpcVersion: String by project
         val kodeinVersion: String by project
         val mybatisDynamicVersion: String by project
+        val mybatisVersion: String by project
+        val postgresClientVersion: String by project
 
         implementation(project(":libs:generated:proto"))
         implementation(project(":libs:generated:orm"))
@@ -48,6 +50,8 @@ project(":subdomains:service-user") {
         implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")
         implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
         implementation("io.grpc:grpc-protobuf:$grpcVersion")
+        implementation("org.postgresql:postgresql:$postgresClientVersion")
+        implementation("org.mybatis:mybatis:$mybatisVersion")
         implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:$mybatisDynamicVersion")
         runtimeOnly("io.grpc:grpc-netty:$grpcVersion")
     }
@@ -58,6 +62,8 @@ project(":subdomains:service-shop") {
         val grpcVersion: String by project
         val kodeinVersion: String by project
         val mybatisDynamicVersion: String by project
+        val mybatisVersion: String by project
+        val postgresClientVersion: String by project
 
         implementation(project(":libs:util"))
         implementation(project(":libs:generated:proto"))
@@ -68,6 +74,9 @@ project(":subdomains:service-shop") {
         implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
         implementation("io.grpc:grpc-protobuf:$grpcVersion")
         implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:$mybatisDynamicVersion")
+        implementation("org.mybatis:mybatis:$mybatisVersion")
+        implementation("org.postgresql:postgresql:$postgresClientVersion")
+
         runtimeOnly("io.grpc:grpc-netty:$grpcVersion")
     }
 }
