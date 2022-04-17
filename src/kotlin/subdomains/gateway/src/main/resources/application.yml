@@ -1,0 +1,8 @@
+grpc:
+  client:
+    user:
+      addr: localhost
+      port: 50051
+    shop:
+      addr: localhost
+      port: 50052

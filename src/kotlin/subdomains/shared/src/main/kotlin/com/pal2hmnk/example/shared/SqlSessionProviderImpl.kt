@@ -13,11 +13,12 @@ abstract class SqlSessionProviderImpl: SqlSessionProvider {
     abstract val mapper: SqlSessionConfigMapper
 
     override fun get(): SqlSession {
+        val dsConfig = DataSourceConfig()
         val ds = UnpooledDataSource(
-            "org.postgresql.Driver",
-            "jdbc:postgresql://localhost:5432/app_db",
-            "app_user",
-            "password"
+            dsConfig.driverClassName,
+            dsConfig.url,
+            dsConfig.username,
+            dsConfig.password,
         )
         val environment = Environment("test", JdbcTransactionFactory(), ds)
         val config = Configuration(environment).apply(mapper)
