@@ -9,8 +9,12 @@ import com.pal2hmnk.example.user.usecases.FindByName
 class UserController(
     private val scenario: FindByName,
 ) : UserServiceGrpcKt.UserServiceCoroutineImplBase() {
-    override suspend fun findUserInfo(request: UserRequest): UserInfo =
+    override suspend fun findUserInfo(request: UserRequest): UserInfo = try {
         scenario.exec(request.name).translate()
+    } catch (e: Exception) {
+        println(e)
+        UserInfo.getDefaultInstance()
+    }
 
     private fun User.translate(): UserInfo =
         UserInfo.newBuilder()

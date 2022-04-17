@@ -11,8 +11,13 @@ import com.pal2hmnk.example.util.DateConverter
 class ShopController(
     private val scenario: FindOrderHistory
 ) : ShopServiceGrpcKt.ShopServiceCoroutineImplBase() {
-    override suspend fun findOrderHistory(request: UserId): OrderHistoryList =
+    override suspend fun findOrderHistory(request: UserId): OrderHistoryList = try {
         scenario.exec(request.id).translate()
+    } catch (e: Exception) {
+        println(e)
+        OrderHistoryList.getDefaultInstance()
+    }
+
 
     private fun OutputData.translate(): OrderHistoryList =
         OrderHistoryList.newBuilder().also {
