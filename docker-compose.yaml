@@ -17,3 +17,22 @@ services:
       POSTGRES_DB: "app_db"
     volumes:
       - "data-pg:/var/lib/postgresql/data"
+  gateway:
+    container_name: gateway
+    image: pal2hmnk/gateway:latest
+    ports:
+      - "8080:8080"
+
+  service-user:
+    container_name: service-user
+    image: pal2hmnk/service-user:latest
+    links: [pgdb]
+    ports:
+      - "50051:50051"
+
+  service-shop:
+    container_name: service-shop
+    image: pal2hmnk/service-shop:latest
+    links: [pgdb]
+    ports:
+      - "50052:50052"
