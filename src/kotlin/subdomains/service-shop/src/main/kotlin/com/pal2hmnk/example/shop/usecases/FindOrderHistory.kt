@@ -3,6 +3,6 @@ package com.pal2hmnk.example.shop.usecases
 import com.pal2hmnk.example.shared.usecases.Scenario
 import com.pal2hmnk.example.shop.domains.OrderHistory
 
-interface FindOrderHistory: Scenario<OutputData, Int>
+interface FindOrderHistory: Scenario<OrderHistoryOutputData, Int>
 
-class OutputData(val value: List<OrderHistory>)
+class OrderHistoryOutputData(val value: List<OrderHistory>)

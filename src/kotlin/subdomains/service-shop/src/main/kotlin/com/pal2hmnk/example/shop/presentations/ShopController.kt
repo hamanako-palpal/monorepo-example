@@ -5,7 +5,7 @@ import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.generated.grpc.services.ShopServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.UserId
 import com.pal2hmnk.example.shop.usecases.FindOrderHistory
-import com.pal2hmnk.example.shop.usecases.OutputData
+import com.pal2hmnk.example.shop.usecases.OrderHistoryOutputData
 import com.pal2hmnk.example.util.DateConverter
 
 class ShopController(
@@ -19,7 +19,7 @@ class ShopController(
     }
 
 
-    private fun OutputData.translate(): OrderHistoryList =
+    private fun OrderHistoryOutputData.translate(): OrderHistoryList =
         OrderHistoryList.newBuilder().also {
             this.value.forEachIndexed { idx, history ->
                 val grpcOrderHistory = OrderHistory.newBuilder().apply {

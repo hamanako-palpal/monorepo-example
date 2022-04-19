@@ -6,6 +6,6 @@ import com.pal2hmnk.example.shop.domains.UserId
 class FindOrderHistoryImpl(
     private val repo: OrderHistoryRepository,
 ): FindOrderHistory {
-    override fun exec(params: Int): OutputData =
-        OutputData(repo.findBy(UserId(params)))
+    override fun exec(params: Int): OrderHistoryOutputData =
+        OrderHistoryOutputData(repo.findBy(UserId(params)))
 }
