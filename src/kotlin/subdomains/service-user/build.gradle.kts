@@ -12,6 +12,7 @@ dependencies {
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:orm"))
+    implementation(project(":libs:domains:user"))
     implementation(project(":subdomains:shared"))
 
     implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")

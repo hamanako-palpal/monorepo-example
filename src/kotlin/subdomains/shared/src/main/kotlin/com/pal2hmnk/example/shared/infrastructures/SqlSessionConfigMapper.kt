@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.shared
+package com.pal2hmnk.example.shared.infrastructures
 
 import org.apache.ibatis.session.Configuration
 

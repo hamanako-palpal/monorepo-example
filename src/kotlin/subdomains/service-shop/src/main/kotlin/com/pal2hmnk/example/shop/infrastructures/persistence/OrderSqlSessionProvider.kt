@@ -2,8 +2,8 @@ package com.pal2hmnk.example.shop.infrastructures.persistence
 
 import com.pal2hmnk.example.generated.orm.mapper.OrdersMapper
 import com.pal2hmnk.example.generated.orm.mapper.ShopsMapper
-import com.pal2hmnk.example.shared.SqlSessionConfigMapper
-import com.pal2hmnk.example.shared.SqlSessionProviderImpl
+import com.pal2hmnk.example.shared.infrastructures.SqlSessionConfigMapper
+import com.pal2hmnk.example.shared.infrastructures.SqlSessionProviderImpl
 
 class OrderSqlSessionProvider : SqlSessionProviderImpl() {
     override val mapper: SqlSessionConfigMapper = {

@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.shared
+package com.pal2hmnk.example.shared.presentations
 
 import io.grpc.BindableService
 import io.grpc.ServerBuilder

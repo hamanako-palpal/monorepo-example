@@ -1,7 +1,7 @@
 package com.pal2hmnk.example.shop.usecases
 
+import com.pal2hmnk.example.domain.shop.entities.OrderHistory
 import com.pal2hmnk.example.shared.usecases.Scenario
-import com.pal2hmnk.example.shop.domains.OrderHistory
 
 interface FindOrderHistory: Scenario<OrderHistoryOutputData, Int>
 

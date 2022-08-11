@@ -1,11 +1,11 @@
 package com.pal2hmnk.example.shop.usecases
 
-import com.pal2hmnk.example.shop.domains.OrderHistoryRepository
-import com.pal2hmnk.example.shop.domains.UserId
+import com.pal2hmnk.example.domain.shop.entities.OrderHistoryRepository
+import com.pal2hmnk.example.domain.shop.entities.UserId
 
 class FindOrderHistoryImpl(
     private val repo: OrderHistoryRepository,
-): FindOrderHistory {
+) : FindOrderHistory {
     override fun exec(params: Int): OrderHistoryOutputData =
         OrderHistoryOutputData(repo.findBy(UserId(params)))
 }

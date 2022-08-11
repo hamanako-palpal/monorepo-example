@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.shop.domains
+package com.pal2hmnk.example.domain.shop.entities
 
 @JvmInline
 value class Name(val value: String) {

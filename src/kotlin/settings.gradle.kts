@@ -4,6 +4,8 @@ include(
     "libs:generated:proto",
     "libs:generated:orm",
     "libs:generated:orm-plugin",
+    "libs:domains:shop",
+    "libs:domains:user",
     "libs:util",
     "subdomains:gateway",
     "subdomains:service-shop",

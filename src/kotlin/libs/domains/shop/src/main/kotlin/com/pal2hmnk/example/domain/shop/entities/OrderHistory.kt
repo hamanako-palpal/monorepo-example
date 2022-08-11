@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.shop.domains
+package com.pal2hmnk.example.domain.shop.entities
 
 import java.time.LocalDate
 
