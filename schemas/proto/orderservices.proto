@@ -6,6 +6,6 @@ import "services/users.proto";
 import "services/shops.proto";
 import "services/orders.proto";
 
-service ShopService {
+service OrderService {
   rpc FindOrderHistory (UserId) returns (OrderHistoryList) {}
 }

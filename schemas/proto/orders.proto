@@ -8,21 +8,15 @@ import "services/shops.proto";
 option java_multiple_files = true;
 
 message OrderRequest {
-  int32 id = 1;
+  UserId userId = 1;
 }
 
 message OrderHistoryList {
-  repeated OrderHistory orderHistory = 1;
+  UserId userId = 1;
+  repeated OrderHistory orderHistory = 2;
 }
 
 message OrderHistory {
-  int32 shopId = 1;
-  string name = 2;
-  string ordered = 3;
-}
-
-message OrderInfo {
-  UserInfo userName = 1;
-  ShopInfo shopName = 2;
-  string ordered = 3;
+  ShopId shopId = 1;
+  string ordered = 2;
 }

@@ -1,5 +1,5 @@
 type Query {
-    orderHistory(name: String!): Order
+    orderHistory(name: String!): OrderHistory
 }
 
 type Mutation {
@@ -18,14 +18,14 @@ type Shop {
   name: String!
 }
 
-type OrderHistory {
+type Order {
     shop: Shop!
     ordered: String!
 }
 
-type Order {
+type OrderHistory {
     user: User!
-    orders: [OrderHistory!]!
+    orders: [Order!]!
 }
 
 type Result {

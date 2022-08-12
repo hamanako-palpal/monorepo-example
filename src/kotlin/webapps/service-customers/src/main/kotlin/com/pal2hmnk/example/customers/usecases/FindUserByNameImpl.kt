@@ -5,9 +5,9 @@ import com.pal2hmnk.example.customers.domains.entities.UserRepository
 import com.pal2hmnk.example.customers.domains.values.Name
 import com.pal2hmnk.example.shared.exceptions.DomainException
 
-class FindByNameImpl(
+class FindUserByNameImpl(
     private val repo: UserRepository,
-): FindByName {
+): FindUserByName {
     override fun exec(params: String): User =
         repo.findBy(Name(params)) ?: throw DomainException()
 }

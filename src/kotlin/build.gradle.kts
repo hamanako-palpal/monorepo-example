@@ -58,12 +58,12 @@ tasks.register("copyProto", Copy::class) {
 }
 tasks.register("copyGraphql", Copy::class) {
     from("../../schemas/graphql")
-    into("subdomains/gateway/src/main/resources/schema")
+    into("webapps/gateway/src/main/resources/schema")
     mustRunAfter("cleanDirs")
 }
 tasks.register("cleanDirs", Delete::class) {
     delete("libs/generated/proto/src/main/proto/services")
-    delete("subdomains/gateway/src/main/resources/schema")
+    delete("webapps/gateway/src/main/resources/schema")
 }
 tasks.register("withSchemaChange") {
     dependsOn(tasks.named("copyProto"))
