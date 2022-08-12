@@ -4,13 +4,13 @@ include(
     "libs:generated:proto",
     "libs:generated:orm",
     "libs:generated:orm-plugin",
-    "libs:domains:shop",
-    "libs:domains:user",
+    "libs:domains:contracts",
+    "libs:domains:customers",
     "libs:util",
-    "subdomains:gateway",
-    "subdomains:service-shop",
-    "subdomains:service-user",
-    "subdomains:shared"
+    "webapps:gateway",
+    "webapps:service-contracts",
+    "webapps:service-customers",
+    "webapps:shared"
 )
 pluginManagement {
     repositories {
