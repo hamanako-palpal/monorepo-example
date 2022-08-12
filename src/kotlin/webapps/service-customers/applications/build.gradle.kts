@@ -12,7 +12,7 @@ dependencies {
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:orm"))
-    implementation(project(":libs:domains:customers"))
+    implementation(project(":webapps:service-customers:domains"))
     implementation(project(":webapps:shared"))
 
     implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")
@@ -23,13 +23,13 @@ dependencies {
     implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:$mybatisDynamicVersion")
     runtimeOnly("io.grpc:grpc-netty:$grpcVersion")
 }
-val mainClassNm = "com.pal2hmnk.example.user.RootApplicationKt"
+val mainClassNm = "com.pal2hmnk.example.customers.RootApplicationKt"
 application {
     mainClass.set(mainClassNm)
 }
 jib {
     to {
-        image = "pal2hmnk/service-user"
+        image = "pal2hmnk/service-customers"
     }
     container {
         mainClass = mainClassNm

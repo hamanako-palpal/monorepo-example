@@ -16,6 +16,7 @@ val coroutinesVersion: String by project
 dependencies {
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
+    implementation("io.grpc:grpc-stub:${grpcVersion}")
     implementation("com.google.protobuf:protobuf-kotlin:$protobufVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
     runtimeOnly("io.grpc:grpc-netty-shaded:$grpcVersion")

@@ -13,7 +13,7 @@ dependencies {
     implementation(project(":libs:util"))
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:orm"))
-    implementation(project(":libs:domains:contracts"))
+    implementation(project(":webapps:service-contracts:domains"))
     implementation(project(":webapps:shared"))
 
     implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")
@@ -25,13 +25,13 @@ dependencies {
 
     runtimeOnly("io.grpc:grpc-netty:$grpcVersion")
 }
-val mainClassNm = "com.pal2hmnk.example.shop.RootApplicationKt"
+val mainClassNm = "com.pal2hmnk.example.contracts.RootApplicationKt"
 application {
     mainClass.set(mainClassNm)
 }
 jib {
     to {
-        image = "pal2hmnk/service-shop"
+        image = "pal2hmnk/service-contracts"
     }
     container {
         mainClass = mainClassNm

@@ -8,6 +8,7 @@
 /src/kotlin/libs/generated/orm-plugin/
 /src/kotlin/libs/generated/orm/src/main/kotlin/
 /src/kotlin/webapps/*/build/
+/src/kotlin/webapps/*/*/build/
 # Ignore Gradle GUI config
 gradle-app.setting
 
