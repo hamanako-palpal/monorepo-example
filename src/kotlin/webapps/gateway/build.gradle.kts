@@ -1,6 +1,6 @@
 plugins {
-    kotlin("plugin.spring") version "1.5.31"
-    id("org.springframework.boot") version "2.4.11"
+    kotlin("plugin.spring") version "1.7.10"
+    id("org.springframework.boot") version "2.6.10"
     id("com.google.cloud.tools.jib") version "3.2.1"
 }
 dependencies {
