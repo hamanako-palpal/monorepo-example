@@ -1,6 +1,6 @@
 package com.pal2hmnk.example.gateway
 
-import com.pal2hmnk.example.gateway.configs.GrpcClientConfig
+import com.pal2hmnk.example.gateway.infrastructures.grpc.configs.GrpcClientConfig
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication

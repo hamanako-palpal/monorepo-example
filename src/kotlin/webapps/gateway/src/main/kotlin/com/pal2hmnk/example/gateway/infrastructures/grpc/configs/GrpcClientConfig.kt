@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.gateway.configs
+package com.pal2hmnk.example.gateway.infrastructures.grpc.configs
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding
@@ -6,14 +6,14 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConfigurationProperties(prefix = "grpc.client")
 @ConstructorBinding
 data class GrpcClientConfig(
-    val user: User,
-    val shop: Shop,
+    val customers: Customers,
+    val contracts: Contracts,
 ) {
-    data class User(
+    data class Customers(
         val addr: String,
         val port: Int,
     )
-    data class Shop(
+    data class Contracts(
         val addr: String,
         val port: Int,
     )

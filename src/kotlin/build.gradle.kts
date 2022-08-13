@@ -21,7 +21,7 @@ val mybatisGeneratorVersion: String by extra("1.4.0")
 val postgresClientVersion: String by extra("42.4.1")
 
 val grpcVersion: String by extra("1.48.1")
-val grpcKotlinVersion: String by extra("1.3.0")
+val grpcKotlinVersion: String by extra("1.2.0")
 val protobufVersion: String by extra("3.21.5")
 val coroutinesVersion: String by extra("1.6.4")
 

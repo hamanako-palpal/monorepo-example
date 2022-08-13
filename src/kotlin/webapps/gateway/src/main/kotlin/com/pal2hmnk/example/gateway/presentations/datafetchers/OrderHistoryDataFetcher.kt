@@ -9,18 +9,24 @@ import com.pal2hmnk.example.generated.graphql.types.Order
 import com.pal2hmnk.example.generated.graphql.types.OrderHistory
 import com.pal2hmnk.example.generated.graphql.types.Shop
 import com.pal2hmnk.example.generated.graphql.types.User
+import com.pal2hmnk.example.util.DateConverter
 
 @DgsComponent
 class OrderHistoryDataFetcher(
     private val scenario: FindOrderHistoriesByUserName,
 ) {
     @DgsQuery
-    fun orderHistory(@InputArgument name: String): Order =
+    fun orderHistory(@InputArgument name: String): OrderHistory =
         scenario.exec(name).translate()
 
-    private fun OrderHistoryOutputData.translate(): Order =
-        Order(
-            user = User(user.id, user.name),
-            orders = orderHistory.map { OrderHistory(Shop(it.id, it.name), it.ordered) }
+    private fun OrderHistoryOutputData.translate(): OrderHistory =
+        OrderHistory(
+            user = User(orderHistory.user.id.value, orderHistory.user.name),
+            orders = orderHistory.orders.map {
+                Order(
+                    shop = Shop(it.shop.id.value, it.shop.name),
+                    ordered = DateConverter.localDateToStr(it.ordered)
+                )
+            }
         )
 }

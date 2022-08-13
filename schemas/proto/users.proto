@@ -5,14 +5,14 @@ package com.pal2hmnk.example.generated.grpc.services;
 option java_multiple_files = true;
 
 service UserService {
-  rpc FindUserInfo(UserRequest) returns (UserInfo) {}
+  rpc FindUserInfoByName(UserName) returns (UserInfo) {}
 }
 
 message UserId {
   int32 id = 1;
 }
 
-message UserRequest {
+message UserName {
   string name = 1;
 }
 
