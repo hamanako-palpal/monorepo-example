@@ -23,10 +23,10 @@ class OrderHistoryController(
 
     private fun OrderHistoryOutputData.translate(): OrderHistoryList =
         OrderHistoryList.newBuilder().also {
-            it.setUserId(UserId.newBuilder().setId(this.orderHistory.first().userId()))
+            it.setUserId(UserId.newBuilder().setValue(this.orderHistory.first().userId()))
             this.orderHistory.forEachIndexed { idx, history ->
                 val grpcOrderHistory = OrderHistory.newBuilder().apply {
-                    shopId = ShopId.newBuilder().setId(history.shopId()).build()
+                    shopId = ShopId.newBuilder().setValue(history.shopId()).build()
                     ordered = DateConverter.localDateToStr(history.ordered)
                 }.build()
                 it.setOrderHistory(idx, grpcOrderHistory)

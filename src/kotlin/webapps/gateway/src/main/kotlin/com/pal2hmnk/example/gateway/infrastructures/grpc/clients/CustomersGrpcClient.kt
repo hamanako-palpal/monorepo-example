@@ -25,18 +25,18 @@ class CustomersGrpcClient(
     private val shopStub = ShopServiceGrpcKt.ShopServiceCoroutineStub(channel)
 
     suspend fun findUserInfo(name: String): User {
-        val request = UserName.newBuilder().setName(name).build()
+        val request = UserName.newBuilder().setValue(name).build()
         return userStub.findUserInfoByName(request).let { User(UserId(it.id), it.name) }
     }
 
     suspend fun findShopsByShopIds(shopIds : Set<ShopId>) : List<Shop> {
         val request = ShopIdsRequest.newBuilder().also {
             shopIds.forEachIndexed { idx, shopId ->
-                it.setIds(idx, com.pal2hmnk.example.generated.grpc.services.ShopId.newBuilder().setId(shopId.value))
+                it.setIds(idx, com.pal2hmnk.example.generated.grpc.services.ShopId.newBuilder().setValue(shopId.value))
             }
         }.build()
         return shopStub.findShopInfo(request).shopsList.map {
-            Shop(ShopId(it.id.id), it.name)
+            Shop(ShopId(it.id.value), it.name)
         }
     }
 }

@@ -19,7 +19,7 @@ class ContractsGrpcClient(
     )
     private val orderStub = OrderServiceGrpcKt.OrderServiceCoroutineStub(channel)
     suspend fun findBy(id: UserId): OrderHistoryList {
-        val request = GrpcUserId.newBuilder().setId(id.value).build()
+        val request = GrpcUserId.newBuilder().setValue(id.value).build()
         return orderStub.findOrderHistory(request)
     }
 }

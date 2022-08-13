@@ -23,6 +23,6 @@ class ShopController(
     }
 
     private fun Shop.translate() = ShopInfo.newBuilder()
-        .setId(ShopId.newBuilder().setId(this.shopId()))
+        .setId(ShopId.newBuilder().setValue(this.shopId()))
         .setName(this.shopName())
 }
