@@ -17,9 +17,8 @@ class OrderHistoryRepositoryImpl(
     override suspend fun findBy(name: String): OrderHistory {
         val user = customersGrpcClient.findUserInfo(name)
         val orderHistoryMap = contractsGrpcClient.findBy(user.id).orderHistoryList
-            .associateBy { ShopId(it.shopId.id) }
-        val spaceIdSet = orderHistoryMap.keys
-        val shopList = customersGrpcClient.findShopsByShopIds(spaceIdSet)
+            .associateBy { ShopId(it.shopId.value) }
+        val shopList = customersGrpcClient.findShopsByShopIds(orderHistoryMap.keys)
 
         return OrderHistory(
             user,

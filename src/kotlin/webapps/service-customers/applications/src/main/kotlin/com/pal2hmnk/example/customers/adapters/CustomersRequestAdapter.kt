@@ -5,5 +5,5 @@ import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 
 object CustomersRequestAdapter {
     fun transform(request: ShopIdsRequest): List<ShopId> =
-        request.idsList.map { ShopId(it.id) }
+        request.idsList.map { ShopId(it.value) }
 }
