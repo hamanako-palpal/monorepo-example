@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.shared.infrastructures
+package com.pal2hmnk.example.shared.infrastructures.persistence
 
 class DataSourceConfig(
     address: String = System.getenv("DB_ADDRESS"),

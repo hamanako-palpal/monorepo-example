@@ -6,7 +6,7 @@ import com.pal2hmnk.example.customers.domains.values.ShopId
 import com.pal2hmnk.example.generated.orm.mapper.ShopsDynamicSqlSupport
 import com.pal2hmnk.example.generated.orm.mapper.ShopsMapper
 import com.pal2hmnk.example.generated.orm.mapper.select
-import com.pal2hmnk.example.shared.infrastructures.SqlSessionProvider
+import com.pal2hmnk.example.shared.infrastructures.persistence.SqlSessionProvider
 import org.mybatis.dynamic.sql.util.kotlin.elements.isIn
 
 class ShopRepositoryImpl(

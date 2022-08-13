@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.shared.infrastructures
+package com.pal2hmnk.example.shared.infrastructures.persistence
 
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSource
 import org.apache.ibatis.mapping.Environment

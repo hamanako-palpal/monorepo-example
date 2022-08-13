@@ -15,7 +15,7 @@ import com.pal2hmnk.example.customers.usecases.FindShopsByIds
 import com.pal2hmnk.example.customers.usecases.FindShopsByIdsImpl
 import com.pal2hmnk.example.customers.usecases.FindUserByName
 import com.pal2hmnk.example.customers.usecases.FindUserByNameImpl
-import com.pal2hmnk.example.shared.infrastructures.SqlSessionProvider
+import com.pal2hmnk.example.shared.infrastructures.persistence.SqlSessionProvider
 import com.pal2hmnk.example.shared.presentations.GrpcServerBase
 import io.grpc.BindableService
 

@@ -11,7 +11,7 @@ import com.pal2hmnk.example.contracts.presentations.OrderHistoryController
 import com.pal2hmnk.example.contracts.usecases.FindOrderHistoryImpl
 import com.pal2hmnk.example.contracts.usecases.FindOrderHistory
 import com.pal2hmnk.example.shared.presentations.GrpcServerBase
-import com.pal2hmnk.example.shared.infrastructures.SqlSessionProvider
+import com.pal2hmnk.example.shared.infrastructures.persistence.SqlSessionProvider
 import io.grpc.BindableService
 
 fun main() {

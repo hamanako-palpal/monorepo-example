@@ -8,7 +8,7 @@ import com.pal2hmnk.example.generated.orm.mapper.OrdersDynamicSqlSupport.Orders
 import com.pal2hmnk.example.generated.orm.mapper.OrdersMapper
 import com.pal2hmnk.example.generated.orm.mapper.select
 import com.pal2hmnk.example.generated.orm.model.OrdersRecord
-import com.pal2hmnk.example.shared.infrastructures.SqlSessionProvider
+import com.pal2hmnk.example.shared.infrastructures.persistence.SqlSessionProvider
 import com.pal2hmnk.example.util.DateConverter
 import org.mybatis.dynamic.sql.util.kotlin.elements.isEqualTo
 

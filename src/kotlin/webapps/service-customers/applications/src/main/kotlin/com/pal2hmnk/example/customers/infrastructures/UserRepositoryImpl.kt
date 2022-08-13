@@ -7,7 +7,7 @@ import com.pal2hmnk.example.generated.orm.mapper.UsersDynamicSqlSupport.Users
 import com.pal2hmnk.example.generated.orm.mapper.UsersMapper
 import com.pal2hmnk.example.generated.orm.mapper.selectOne
 import com.pal2hmnk.example.generated.orm.model.UsersRecord
-import com.pal2hmnk.example.shared.infrastructures.SqlSessionProvider
+import com.pal2hmnk.example.shared.infrastructures.persistence.SqlSessionProvider
 import org.mybatis.dynamic.sql.util.kotlin.elements.isEqualTo
 
 class UserRepositoryImpl(
