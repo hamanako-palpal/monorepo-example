@@ -8,6 +8,6 @@ import com.pal2hmnk.example.shared.exceptions.DomainException
 class FindUserByNameImpl(
     private val repo: UserRepository,
 ): FindUserByName {
-    override fun exec(params: String): User =
-        repo.findBy(Name(params)) ?: throw DomainException()
+    override fun exec(name: String): User =
+        repo.findBy(Name(name)) ?: throw DomainException()
 }

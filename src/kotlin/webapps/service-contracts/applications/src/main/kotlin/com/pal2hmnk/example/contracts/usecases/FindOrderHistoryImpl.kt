@@ -6,7 +6,7 @@ import com.pal2hmnk.example.contracts.domains.values.UserId
 class FindOrderHistoryImpl(
     private val repo: OrderRepository,
 ) : FindOrderHistory {
-    override fun exec(params: UserId): OrderHistoryOutputData {
-        return OrderHistoryOutputData(repo.findOrderHistoryBy(params))
+    override fun exec(userId: UserId): OrderHistoryOutputData {
+        return OrderHistoryOutputData(repo.findOrderHistoryBy(userId))
     }
 }

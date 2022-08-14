@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 class FindOrderHistoriesByUserNameImpl(
     private val orderHistoryQueryService: OrderHistoryQueryService,
 ) : FindOrderHistoriesByUserName {
-    override fun exec(params: String): OrderHistoryOutputData = runBlocking {
-        OrderHistoryOutputData(orderHistoryQueryService.findBy(params))
+    override fun exec(name: String): OrderHistoryOutputData = runBlocking {
+        OrderHistoryOutputData(orderHistoryQueryService.findBy(name))
     }
 }
