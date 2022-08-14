@@ -17,7 +17,7 @@ create fat jar.
 
 ### migrate db
 run images.
-> docker compose -f docker-compose.yaml -f migrate.yaml up -d pgdb migrate
+> docker compose -f docker-compose.yaml -f docker-migrate.yaml up -d pgdb migrate-customers migrate-contracts
 
 ### code generate 
 > cd src/kotlin  

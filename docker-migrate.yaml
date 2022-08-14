@@ -1,11 +1,20 @@
 version: '3.6'
 
 services:
-  migrate:
-    container_name: migrate
+  migrate-customers:
+    container_name: migrate-customers
     image: mybatis/migrations
     volumes:
-      - "./db:/migration"
+      - "./db/migrations/customers:/migration"
+    depends_on:
+      - pgdb
+    command: ["up"]
+
+  migrate-contracts:
+    container_name: migrate-contracts
+    image: mybatis/migrations
+    volumes:
+      - "./db/migrations/contracts:/migration"
     depends_on:
       - pgdb
     command: ["up"]

@@ -7,16 +7,19 @@ volumes:
 services:
   pgdb:
     container_name: pgdb
-    image: postgres:alpine
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-db
+    image: pgdb
     ports:
-      - "5432:5432"
+      - 5432:5432
     environment:
-      POSTGRES_HOST_AUTH_METHOD: "trust"
-      POSTGRES_USER: "app_user"
-      POSTGRES_PASSWORD: "password"
-      POSTGRES_DB: "app_db"
+        - POSTGRES_HOST_AUTH_METHOD=trust
+        - POSTGRES_MULTIPLE_DATABASES=db_contracts,db_customers
+        - POSTGRES_USER=app_user
+        - POSTGRES_PASSWORD=password
     volumes:
-      - "data-pg:/var/lib/postgresql/data"
+        - "data-pg:/var/lib/postgresql/data"
 
   gateway:
     container_name: gateway

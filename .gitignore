@@ -1,6 +1,6 @@
 .gradle
 /build/
-/db/drivers/
+/db/migrations/*/drivers/
 /src/kotlin/.idea/
 /src/kotlin/.gradle
 /src/kotlin/libs/*/*/build/
