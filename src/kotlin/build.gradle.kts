@@ -25,6 +25,13 @@ val grpcKotlinVersion: String by extra("1.2.0")
 val protobufVersion: String by extra("3.21.5")
 val coroutinesVersion: String by extra("1.6.4")
 
+val exposedVersion: String by extra("0.39.2")
+
+val testcontainersVersion: String by extra("1.17.3")
+val junitJupiterVersion: String by extra("5.5.2")
+val kotestRunnerJunit5Version: String by extra("5.4.2")
+val grpcTestingVersion: String by extra("1.48.1")
+
 allprojects {
     apply(plugin = "java")
     apply(plugin = "kotlin")

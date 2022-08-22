@@ -10,15 +10,17 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory
 
 abstract class SqlSessionProviderImpl: SqlSessionProvider {
 
+    override val dataSourceConfig
+    get() = DataSourceConfig()
+
     abstract val mapper: SqlSessionConfigMapper
 
-    override fun get(): SqlSession {
-        val dsConfig = DataSourceConfig()
+    protected fun create(): SqlSession {
         val ds = UnpooledDataSource(
-            dsConfig.driverClassName,
-            dsConfig.url,
-            dsConfig.username,
-            dsConfig.password,
+            dataSourceConfig.driverClassName,
+            dataSourceConfig.url,
+            dataSourceConfig.username,
+            dataSourceConfig.password,
         )
         val environment = Environment("test", JdbcTransactionFactory(), ds)
         val config = Configuration(environment).apply(mapper)
