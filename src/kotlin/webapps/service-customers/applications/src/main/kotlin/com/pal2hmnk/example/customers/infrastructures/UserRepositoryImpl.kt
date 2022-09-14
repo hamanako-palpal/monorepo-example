@@ -12,7 +12,7 @@ class UserRepositoryImpl : UserRepository {
         Users.select { Users.name eq name.value }
             .singleOrNull()
             ?.let {
-                User(it[Users.id].toInt(), Name(it[Users.name]))
+                User(it[Users.id], Name(it[Users.name]))
             }
     }
 }

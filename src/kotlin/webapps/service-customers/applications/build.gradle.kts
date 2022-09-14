@@ -12,12 +12,12 @@ dependencies {
     val exposedVersion: String by project
     val junitJupiterVersion: String by project
     val kotestRunnerJunit5Version: String by project
-    val testcontainersVersion: String by project
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:orm"))
     implementation(project(":webapps:service-customers:domains"))
     implementation(project(":webapps:shared"))
+    testImplementation(project(":webapps:shared-test"))
 
     implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
@@ -30,8 +30,6 @@ dependencies {
     runtimeOnly("io.grpc:grpc-netty:$grpcVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestRunnerJunit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
-    testImplementation("org.testcontainers:junit-jupiter:$testcontainersVersion")
-    testImplementation("org.testcontainers:postgresql:$testcontainersVersion")
 }
 val mainClassNm = "com.pal2hmnk.example.customers.RootApplicationKt"
 application {

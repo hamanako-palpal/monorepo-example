@@ -14,8 +14,10 @@ import com.pal2hmnk.example.customers.usecases.FindShopsByIds
 import com.pal2hmnk.example.customers.usecases.FindShopsByIdsImpl
 import com.pal2hmnk.example.customers.usecases.FindUserByName
 import com.pal2hmnk.example.customers.usecases.FindUserByNameImpl
+import com.pal2hmnk.example.shared.infrastructures.persistence.DataSourceConfig
 import com.pal2hmnk.example.shared.presentations.GrpcServerBase
 import io.grpc.BindableService
+import org.jetbrains.exposed.sql.Database
 
 fun main() {
     val kodein = Kodein {
@@ -30,5 +32,12 @@ fun main() {
             )
         }
     }
+    val dbConfig = DataSourceConfig()
+    Database.connect(
+        url = dbConfig.url!!,
+        driver = dbConfig.driverClassName!!,
+        user = dbConfig.username!!,
+        password = dbConfig.password!!,
+    )
     GrpcServerBase(kodein.instance()).runServer()
 }

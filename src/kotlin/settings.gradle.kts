@@ -11,7 +11,8 @@ include(
     "webapps:service-contracts:domains",
     "webapps:service-customers:applications",
     "webapps:service-customers:domains",
-    "webapps:shared"
+    "webapps:shared",
+    "webapps:shared-test"
 )
 pluginManagement {
     repositories {

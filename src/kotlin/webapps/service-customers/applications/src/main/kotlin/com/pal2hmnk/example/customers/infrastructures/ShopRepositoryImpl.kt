@@ -9,7 +9,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class ShopRepositoryImpl : ShopRepository {
     override fun findByIds(ids: List<ShopId>): List<Shop> = transaction {
-        Shops.select { Shops.id.inList(ids.map { it.value.toLong() }) }.map {
+        Shops.select { Shops.id.inList(ids.map { it.value }) }.map {
             Shop.of(it[Shops.id].toInt(), it[Shops.name])
         }
     }
