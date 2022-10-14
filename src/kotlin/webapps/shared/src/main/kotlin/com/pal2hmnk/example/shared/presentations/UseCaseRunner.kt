@@ -8,7 +8,7 @@ class UseCaseRunner<T, U, V, W>(
     converter: (V) -> W,
     exceptionHandler: () -> W
 ) {
-    private val composite: (T) -> W = {
+    val run: (T) -> W = {
         try {
             transformer.compose(useCase).compose(converter).invoke(it)
         } catch (e: Exception) {
@@ -16,6 +16,4 @@ class UseCaseRunner<T, U, V, W>(
             exceptionHandler()
         }
     }
-
-    fun run(input: T): W = composite.invoke(input)
 }
