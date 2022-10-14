@@ -17,7 +17,7 @@ object ContractsAdapter {
             outputData.orderHistory.forEachIndexed { idx, history ->
                 val grpcOrderHistory = OrderHistory.newBuilder().apply {
                     shopId = ShopId.newBuilder().setValue(history.shopId()).build()
-                    ordered = DateConverter.localDateToStr(history.ordered)
+                    ordered = DateConverter.localDateTimeToStr(history.ordered)
                 }.build()
                 it.setOrderHistory(idx, grpcOrderHistory)
             }

@@ -25,7 +25,7 @@ class OrderHistoryDataFetcher(
             orders = orderHistory.orders.map {
                 Order(
                     shop = Shop(it.shop.id.value, it.shop.name),
-                    ordered = DateConverter.localDateToStr(it.ordered)
+                    ordered = DateConverter.localDateTimeToStr(it.ordered)
                 )
             }
         )
