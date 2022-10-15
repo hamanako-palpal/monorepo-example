@@ -14,7 +14,6 @@ dependencies {
     val kotestRunnerJunit5Version: String by project
 
     implementation(project(":libs:generated:proto"))
-    implementation(project(":libs:generated:orm"))
     implementation(project(":webapps:service-customers:domains"))
     implementation(project(":webapps:shared"))
     testImplementation(project(":webapps:shared-test"))

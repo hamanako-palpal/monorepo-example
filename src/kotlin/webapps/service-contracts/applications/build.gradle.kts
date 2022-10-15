@@ -15,7 +15,6 @@ dependencies {
 
     implementation(project(":libs:util"))
     implementation(project(":libs:generated:proto"))
-    implementation(project(":libs:generated:orm"))
     implementation(project(":webapps:service-contracts:domains"))
     implementation(project(":webapps:shared"))
     testImplementation(project(":webapps:shared-test"))
