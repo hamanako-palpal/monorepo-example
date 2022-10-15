@@ -28,7 +28,7 @@ class OrderHistoryQueryServiceImpl(
                     ?.let { shop ->
                         Order(
                             shop,
-                            DateConverter.strToLocalDate(it.value.ordered)
+                            DateConverter.strToLocalDateTime(it.value.ordered)
                         )
                     }
             },
