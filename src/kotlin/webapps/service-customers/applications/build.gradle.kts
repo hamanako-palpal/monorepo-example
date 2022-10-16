@@ -12,13 +12,18 @@ dependencies {
     val exposedVersion: String by project
     val junitJupiterVersion: String by project
     val kotestRunnerJunit5Version: String by project
+    val argon2Version: String by project
+    val jwtVersion: String by project
 
     implementation(project(":libs:generated:proto"))
+    implementation(project(":libs:util"))
     implementation(project(":webapps:service-customers:domains"))
     implementation(project(":webapps:shared"))
     testImplementation(project(":webapps:shared-test"))
 
+    implementation("com.auth0:java-jwt:$jwtVersion")
     implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")
+    implementation("de.mkammerer:argon2-jvm:$argon2Version")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")

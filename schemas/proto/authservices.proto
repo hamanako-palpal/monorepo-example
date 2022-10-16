@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package com.pal2hmnk.example.generated.grpc.services;
+
+import "services/users.proto";
+
+option java_multiple_files = true;
+
+message Token {
+  string value = 1;
+}
+
+service AuthService {
+  rpc FindCredential(UserAuthInfo) returns (Token) {}
+}
+
+message UserAuthInfo {
+  UserName userName = 1;
+  string password = 2;
+}

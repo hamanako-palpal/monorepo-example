@@ -1,6 +1,6 @@
 package com.pal2hmnk.example.gateway.infrastructures.grpc.clients
 
-import com.pal2hmnk.example.gateway.domains.UserId
+import com.pal2hmnk.example.gateway.domains.values.UserId
 import com.pal2hmnk.example.gateway.infrastructures.grpc.GrpcClient
 import com.pal2hmnk.example.gateway.infrastructures.grpc.configs.GrpcClientConfig
 import com.pal2hmnk.example.gateway.infrastructures.grpc.factories.GrpcFactory

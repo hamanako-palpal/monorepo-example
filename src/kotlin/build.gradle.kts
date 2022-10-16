@@ -6,7 +6,7 @@ plugins {
 }
 
 val kotlinVersion: String by extra("1.7.10")
-val jacksonKotlinVersion: String by extra("2.13.3")
+val jacksonKotlinVersion: String by extra("2.13.4")
 
 val javaxAnnotationVersion: String by extra("1.3.2")
 
@@ -26,6 +26,9 @@ val protobufVersion: String by extra("3.21.5")
 val coroutinesVersion: String by extra("1.6.4")
 
 val exposedVersion: String by extra("0.39.2")
+
+val argon2Version: String by extra("2.11")
+val jwtVersion: String by extra("4.1.0")
 
 val testcontainersVersion: String by extra("1.17.3")
 val junitJupiterVersion: String by extra("5.5.2")
