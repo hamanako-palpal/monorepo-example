@@ -27,9 +27,3 @@ class UserRepositoryImplTest : FunSpec({
         }
     }
 })
-
-object KotestProjectConfig : AbstractProjectConfig() {
-    override suspend fun beforeProject() {
-        PostgresContainer.connectContainer()
-    }
-}
