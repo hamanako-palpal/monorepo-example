@@ -11,7 +11,7 @@ dependencies {
 }
 
 tasks.withType<GenerateJavaTask> {
-    schemaPaths = mutableListOf("../../../../../schemas/graphql")
+    schemaPaths = mutableListOf("libs/generated/graphql/src/main/resources/schema")
     generateClient = false
     packageName = "com.pal2hmnk.example.generated.graphql"
 }
