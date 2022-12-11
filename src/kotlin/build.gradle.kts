@@ -73,8 +73,17 @@ tasks.register("cleanDirs", Delete::class) {
     delete("libs/generated/proto/src/main/proto/services")
     delete("libs/generated/graphql/src/main/resources/schema")
 }
-tasks.register("withSchemaChange") {
+tasks.register("copySchemas") {
     dependsOn(tasks.named("copyProto"))
     dependsOn(tasks.named("copyGraphql"))
     dependsOn(tasks.named("cleanDirs"))
+}
+tasks.register("makeSchemas") {
+    dependsOn(":libs:generated:graphql:generateJava")
+    dependsOn(":libs:generated:proto:generateProto")
+    mustRunAfter("copySchemas")
+}
+tasks.register("withSchemaChange") {
+    dependsOn(tasks.named("copySchemas"))
+    dependsOn(tasks.named("makeSchemas"))
 }
