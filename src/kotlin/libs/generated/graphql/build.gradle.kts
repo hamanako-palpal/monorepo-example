@@ -1,7 +1,7 @@
 import com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask
 
 plugins {
-    id("com.netflix.dgs.codegen") version "5.1.2"
+    id("com.netflix.dgs.codegen") version "5.6.3"
 }
 
 val javaxAnnotationVersion: String by project

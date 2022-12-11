@@ -1,11 +1,7 @@
-import com.google.protobuf.gradle.generateProtoTasks
-import com.google.protobuf.gradle.id
-import com.google.protobuf.gradle.plugins
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
+import com.google.protobuf.gradle.*
 
 plugins {
-    id("com.google.protobuf") version "0.8.16"
+    id("com.google.protobuf") version "0.9.1"
 }
 
 val grpcVersion: String by project

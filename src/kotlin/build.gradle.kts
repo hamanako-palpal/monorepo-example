@@ -6,34 +6,30 @@ plugins {
 }
 
 val kotlinVersion: String by extra("1.7.10")
-val jacksonKotlinVersion: String by extra("2.13.4")
+val jacksonKotlinVersion: String by extra("2.14.1")
 
 val javaxAnnotationVersion: String by extra("1.3.2")
 
-val kodeinVersion: String by extra("4.1.0")
+val springBootVersion: String by extra("2.7.6")
+val grpcSpringBootVersion: String by extra("4.9.1")
 
-val graphqlDgsVersion: String by extra("5.1.0")
-val springBootVersion: String by extra("2.6.10")
-val grpcSpringBootVersion: String by extra("4.9.0")
+val snakeYamlVersion: String by extra("1.33")
 
-val mybatisVersion: String by extra("3.5.7")
-val mybatisDynamicVersion: String by extra("1.3.0")
-val mybatisGeneratorVersion: String by extra("1.4.0")
-val postgresClientVersion: String by extra("42.4.1")
+val postgresClientVersion: String by extra("42.5.1")
 
-val grpcVersion: String by extra("1.48.1")
-val grpcKotlinVersion: String by extra("1.2.0")
-val protobufVersion: String by extra("3.21.5")
+val grpcVersion: String by extra("1.51.0")
+val grpcKotlinVersion: String by extra("1.3.0")
+val protobufVersion: String by extra("3.21.11")
 val coroutinesVersion: String by extra("1.6.4")
 
-val exposedVersion: String by extra("0.39.2")
+val exposedVersion: String by extra("0.41.1")
 
 val argon2Version: String by extra("2.11")
-val jwtVersion: String by extra("4.1.0")
+val jwtVersion: String by extra("4.2.1")
 
-val testcontainersVersion: String by extra("1.17.3")
-val junitJupiterVersion: String by extra("5.5.2")
-val kotestRunnerJunit5Version: String by extra("5.4.2")
+val testcontainersVersion: String by extra("1.17.6")
+val junitJupiterVersion: String by extra("5.9.1")
+val kotestRunnerJunit5Version: String by extra("5.5.4")
 val grpcTestingVersion: String by extra("1.48.1")
 
 allprojects {

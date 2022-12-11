@@ -1,7 +1,6 @@
 plugins {
     kotlin("plugin.spring") version "1.7.10"
-    id("org.springframework.boot") version "2.6.10"
-    id("com.google.cloud.tools.jib") version "3.2.1"
+    id("org.springframework.boot") version "2.7.6"
 }
 dependencies {
     val springBootVersion: String by project
@@ -15,6 +14,7 @@ dependencies {
     val kotestRunnerJunit5Version: String by project
     val argon2Version: String by project
     val jwtVersion: String by project
+    val snakeYamlVersion: String by project
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:util"))
@@ -35,17 +35,10 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     implementation("org.jetbrains.exposed:spring-transaction:$exposedVersion")
     implementation("org.postgresql:postgresql:$postgresClientVersion")
+    implementation("org.yaml:snakeyaml:$snakeYamlVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestRunnerJunit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
-}
-jib {
-    to {
-        image = "pal2hmnk/service-customers"
-    }
-    container {
-        mainClass = "com.pal2hmnk.example.customers.RootApplicationKt"
-    }
 }
