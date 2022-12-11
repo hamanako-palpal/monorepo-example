@@ -14,6 +14,7 @@ val kodeinVersion: String by extra("4.1.0")
 
 val graphqlDgsVersion: String by extra("5.1.0")
 val springBootVersion: String by extra("2.6.10")
+val grpcSpringBootVersion: String by extra("4.9.0")
 
 val mybatisVersion: String by extra("3.5.7")
 val mybatisDynamicVersion: String by extra("1.3.0")

@@ -8,7 +8,9 @@ import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.customers.domains.entities.UserRepository
 import com.pal2hmnk.example.customers.domains.values.Name
 import com.pal2hmnk.example.customers.domains.values.Password
+import org.springframework.stereotype.Service
 
+@Service
 class AuthenticateImpl(
     private val authTokenRepository: AuthTokenRepository,
     private val passwordHashedRepository : PasswordHashedRepository,

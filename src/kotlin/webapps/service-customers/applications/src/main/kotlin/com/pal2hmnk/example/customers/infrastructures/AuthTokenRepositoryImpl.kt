@@ -10,8 +10,10 @@ import com.pal2hmnk.example.customers.infrastructures.persistence.exposed.AuthTo
 import com.pal2hmnk.example.util.DateConverter
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.springframework.stereotype.Repository
 import java.time.LocalDateTime
 
+@Repository
 class AuthTokenRepositoryImpl : AuthTokenRepository {
     private val privateKey = "secret"
 
@@ -45,8 +47,9 @@ class AuthTokenRepositoryImpl : AuthTokenRepository {
 
     companion object {
         private val charset = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-        fun random(count: Int): String = (1..count)
-            .map { charset.random() }
-            .joinToString(separator = "")
+        fun random(count: Int): String =
+            (1..count)
+                .map { charset.random() }
+                .joinToString(separator = "")
     }
 }

@@ -6,7 +6,9 @@ import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 import com.pal2hmnk.example.generated.grpc.services.ShopInfos
 import com.pal2hmnk.example.generated.grpc.services.ShopServiceGrpcKt
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
+import org.lognet.springboot.grpc.GRpcService
 
+@GRpcService
 class ShopController(
     private val scenario: FindShopsByIds,
 ) : ShopServiceGrpcKt.ShopServiceCoroutineImplBase() {

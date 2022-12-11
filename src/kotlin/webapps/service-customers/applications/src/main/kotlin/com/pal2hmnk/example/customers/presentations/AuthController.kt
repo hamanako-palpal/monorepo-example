@@ -7,7 +7,9 @@ import com.pal2hmnk.example.generated.grpc.services.AuthServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.Token
 import com.pal2hmnk.example.generated.grpc.services.UserAuthInfo
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
+import org.lognet.springboot.grpc.GRpcService
 
+@GRpcService
 class AuthController(
     scenario: Authenticate,
 ) : AuthServiceGrpcKt.AuthServiceCoroutineImplBase() {

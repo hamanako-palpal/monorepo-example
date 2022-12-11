@@ -1,13 +1,14 @@
 plugins {
-    id("application")
+    kotlin("plugin.spring") version "1.7.10"
+    id("org.springframework.boot") version "2.6.10"
     id("com.google.cloud.tools.jib") version "3.2.1"
 }
 dependencies {
+    val springBootVersion: String by project
+    val grpcSpringBootVersion: String by project
+
     val grpcKotlinVersion: String by project
     val grpcVersion: String by project
-    val kodeinVersion: String by project
-    val mybatisDynamicVersion: String by project
-    val mybatisVersion: String by project
     val postgresClientVersion: String by project
     val exposedVersion: String by project
     val junitJupiterVersion: String by project
@@ -21,24 +22,21 @@ dependencies {
     implementation(project(":webapps:shared"))
     testImplementation(project(":webapps:shared-test"))
 
+    implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
+
     implementation("com.auth0:java-jwt:$jwtVersion")
-    implementation("com.github.salomonbrys.kodein:kodein:$kodeinVersion")
     implementation("de.mkammerer:argon2-jvm:$argon2Version")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+    implementation("org.jetbrains.exposed:spring-transaction:$exposedVersion")
     implementation("org.postgresql:postgresql:$postgresClientVersion")
-    implementation("org.mybatis:mybatis:$mybatisVersion")
-    implementation("org.mybatis.dynamic-sql:mybatis-dynamic-sql:$mybatisDynamicVersion")
-    runtimeOnly("io.grpc:grpc-netty:$grpcVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestRunnerJunit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
-}
-val mainClassNm = "com.pal2hmnk.example.customers.RootApplicationKt"
-application {
-    mainClass.set(mainClassNm)
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
@@ -48,6 +46,6 @@ jib {
         image = "pal2hmnk/service-customers"
     }
     container {
-        mainClass = mainClassNm
+        mainClass = "com.pal2hmnk.example.customers.RootApplicationKt"
     }
 }
