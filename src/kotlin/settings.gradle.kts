@@ -2,7 +2,6 @@ rootProject.name = "monorepo-example"
 include(
     "libs:generated:graphql",
     "libs:generated:proto",
-    "libs:util",
     "webapps:gateway:applications",
     "webapps:gateway:domains",
     "webapps:service-contracts:applications",

@@ -6,7 +6,7 @@ import com.pal2hmnk.example.gateway.domains.querymodels.OrderHistoryQueryService
 import com.pal2hmnk.example.gateway.domains.values.ShopId
 import com.pal2hmnk.example.gateway.infrastructures.grpc.clients.ContractsGrpcClient
 import com.pal2hmnk.example.gateway.infrastructures.grpc.clients.CustomersGrpcClient
-import com.pal2hmnk.example.util.DateConverter
+import com.pal2hmnk.example.shared.utils.DateConverter
 import org.springframework.stereotype.Service
 
 @Service

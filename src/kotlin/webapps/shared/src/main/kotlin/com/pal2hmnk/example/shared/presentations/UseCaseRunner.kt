@@ -1,7 +1,7 @@
 package com.pal2hmnk.example.shared.presentations
 
 import com.pal2hmnk.example.shared.exceptions.DomainException
-import com.pal2hmnk.example.util.compose
+import com.pal2hmnk.example.shared.utils.compose
 
 class UseCaseRunner<T, U, V, W>(
     transformer: (T) -> U,

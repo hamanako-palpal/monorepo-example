@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.util
+package com.pal2hmnk.example.shared.utils
 
 import java.time.LocalDateTime
 import java.time.ZoneId

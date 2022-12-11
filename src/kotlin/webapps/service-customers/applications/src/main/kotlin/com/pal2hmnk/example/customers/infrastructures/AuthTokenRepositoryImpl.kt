@@ -7,7 +7,7 @@ import com.pal2hmnk.example.customers.domains.entities.AuthToken
 import com.pal2hmnk.example.customers.domains.entities.AuthTokenRepository
 import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.customers.infrastructures.persistence.exposed.AuthTokens
-import com.pal2hmnk.example.util.DateConverter
+import com.pal2hmnk.example.shared.utils.DateConverter
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.stereotype.Repository

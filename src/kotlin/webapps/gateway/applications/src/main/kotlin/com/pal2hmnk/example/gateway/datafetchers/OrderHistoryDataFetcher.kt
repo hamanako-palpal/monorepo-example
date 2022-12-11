@@ -9,7 +9,7 @@ import com.pal2hmnk.example.generated.graphql.types.Order
 import com.pal2hmnk.example.generated.graphql.types.OrderHistory
 import com.pal2hmnk.example.generated.graphql.types.Shop
 import com.pal2hmnk.example.generated.graphql.types.User
-import com.pal2hmnk.example.util.DateConverter
+import com.pal2hmnk.example.shared.utils.DateConverter
 
 @DgsComponent
 class OrderHistoryDataFetcher(

@@ -5,7 +5,7 @@ import com.pal2hmnk.example.generated.grpc.services.OrderHistory
 import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.generated.grpc.services.ShopId
 import com.pal2hmnk.example.generated.grpc.services.UserId
-import com.pal2hmnk.example.util.DateConverter
+import com.pal2hmnk.example.shared.utils.DateConverter
 import com.pal2hmnk.example.contracts.domains.values.UserId as UserIdDomain
 
 object ContractsAdapter {

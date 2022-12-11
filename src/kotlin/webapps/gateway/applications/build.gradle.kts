@@ -14,7 +14,6 @@ dependencies {
 
     val snakeYamlVersion: String by project
 
-    implementation(project(":libs:util"))
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:graphql"))
     implementation(project(":webapps:gateway:domains"))

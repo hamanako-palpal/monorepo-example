@@ -13,7 +13,6 @@ dependencies {
     val kotestRunnerJunit5Version: String by project
     val snakeYamlVersion: String by project
 
-    implementation(project(":libs:util"))
     implementation(project(":libs:generated:proto"))
     implementation(project(":webapps:service-contracts:domains"))
     implementation(project(":webapps:shared"))

@@ -17,7 +17,6 @@ dependencies {
     val snakeYamlVersion: String by project
 
     implementation(project(":libs:generated:proto"))
-    implementation(project(":libs:util"))
     implementation(project(":webapps:service-customers:domains"))
     implementation(project(":webapps:shared"))
     testImplementation(project(":webapps:shared-test"))
