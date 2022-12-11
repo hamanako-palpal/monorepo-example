@@ -7,7 +7,9 @@ import com.pal2hmnk.example.contracts.domains.values.UserId
 import com.pal2hmnk.example.contracts.infrastructures.persistence.exposed.Orders
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.springframework.stereotype.Repository
 
+@Repository
 class OrderRepositoryImpl : OrderRepository {
     override fun findOrderHistoryBy(id: UserId): List<Order> = transaction {
         Orders.select { Orders.id eq id.value }.map {

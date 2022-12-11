@@ -2,7 +2,9 @@ package com.pal2hmnk.example.contracts.usecases
 
 import com.pal2hmnk.example.contracts.domains.entities.OrderRepository
 import com.pal2hmnk.example.contracts.domains.values.UserId
+import org.springframework.stereotype.Service
 
+@Service
 class FindOrderHistoryImpl(
     private val repo: OrderRepository,
 ) : FindOrderHistory {

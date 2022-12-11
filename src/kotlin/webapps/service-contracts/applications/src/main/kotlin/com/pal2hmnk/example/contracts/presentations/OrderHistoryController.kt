@@ -6,7 +6,9 @@ import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.generated.grpc.services.OrderServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.UserId
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
+import org.lognet.springboot.grpc.GRpcService
 
+@GRpcService
 class OrderHistoryController(
     private val scenario: FindOrderHistory
 ) : OrderServiceGrpcKt.OrderServiceCoroutineImplBase() {
