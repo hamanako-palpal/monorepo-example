@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.7.21"
     id("com.github.ben-manes.versions") version "0.42.0"
 }
 
-val kotlinVersion: String by extra("1.7.10")
+val kotlinVersion: String by extra("1.7.21")
 val jacksonKotlinVersion: String by extra("2.14.1")
 
 val javaxAnnotationVersion: String by extra("1.3.2")
