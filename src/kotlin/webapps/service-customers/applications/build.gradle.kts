@@ -22,7 +22,7 @@ dependencies {
     testImplementation(project(":webapps:shared-test"))
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
 
     implementation("com.auth0:java-jwt:$jwtVersion")

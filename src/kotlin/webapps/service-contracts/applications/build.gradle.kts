@@ -19,7 +19,7 @@ dependencies {
     testImplementation(project(":webapps:shared-test"))
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")

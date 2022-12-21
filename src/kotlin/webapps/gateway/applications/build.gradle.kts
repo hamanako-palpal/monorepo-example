@@ -27,14 +27,14 @@ dependencies {
     implementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
     implementation("io.grpc:grpc-protobuf:${grpcVersion}")
     implementation("io.grpc:grpc-stub:${grpcVersion}")
+    implementation("io.netty:netty-codec:4.1.86.Final")
 
     implementation("com.github.javafaker:javafaker:1.+") {
         exclude(module = "org.yaml")
     }
     implementation("org.yaml:snakeyaml:$snakeYamlVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
-    implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:$graphqlDgsVersion")
+    implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter:$graphqlDgsVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$graphqlDgsVersion")
-    implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
