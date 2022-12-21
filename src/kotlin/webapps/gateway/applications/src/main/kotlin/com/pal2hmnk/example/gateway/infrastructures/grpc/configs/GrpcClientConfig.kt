@@ -6,14 +6,10 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConfigurationProperties(prefix = "grpc.client")
 @ConstructorBinding
 data class GrpcClientConfig(
-    val customers: Customers,
-    val contracts: Contracts,
+    val customers: GrpcClient,
+    val contracts: GrpcClient,
 ) {
-    data class Customers(
-        val addr: String,
-        val port: Int,
-    )
-    data class Contracts(
+    data class GrpcClient(
         val addr: String,
         val port: Int,
     )

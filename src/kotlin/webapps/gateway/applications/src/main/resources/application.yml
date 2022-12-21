@@ -1,8 +1,8 @@
 grpc:
   client:
-    user:
+    customers:
       addr: localhost
       port: 50051
-    shop:
+    contracts:
       addr: localhost
       port: 50052
