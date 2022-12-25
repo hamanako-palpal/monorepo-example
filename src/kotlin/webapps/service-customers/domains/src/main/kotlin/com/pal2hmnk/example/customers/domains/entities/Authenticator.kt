@@ -7,13 +7,12 @@ class Authenticator(
     private val passwordMatcher: (User, Password) -> Boolean,
     private val tokenGenerator: (User) -> AuthToken,
 ) {
-    private var isAuthenticated = false
     private var isMatched = false
 
     fun authenticate(inputPassword: Password): Authenticator =
-        this.also { it.isAuthenticated = true; it.isMatched = passwordMatcher(user, inputPassword) }
+        this.also { it.isMatched = passwordMatcher(user, inputPassword) }
 
     fun generateToken() = this
-        .takeIf { isAuthenticated && isMatched }
+        .takeIf { isMatched }
         ?.let { tokenGenerator.invoke(user) }
 }
