@@ -6,16 +6,17 @@ import com.pal2hmnk.example.shared.utils.compose
 class UseCaseRunner<T, U, V, W>(
     transformer: (T) -> U,
     useCase: (U) -> V,
-    converter: (V) -> W,
+    converter: (V & Any) -> W & Any,
     exceptionHandler: () -> W & Any,
 ) {
+    private val composedRunner = transformer.compose(useCase)
+
     val run: (T) -> W & Any = {
         try {
-            transformer
-                .compose(useCase)
-                .compose(converter)
+            val executed = composedRunner
                 .invoke(it)
                 ?: throw DomainException()
+            converter.invoke(executed)
         } catch (e: Exception) {
             println(e)
             exceptionHandler()

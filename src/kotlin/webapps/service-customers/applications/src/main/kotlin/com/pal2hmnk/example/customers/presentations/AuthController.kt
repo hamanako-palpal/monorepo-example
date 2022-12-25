@@ -20,7 +20,7 @@ class AuthController(
         },
         useCase = scenario::exec,
         converter = {
-                    it?.let { Token.newBuilder().setValue(it.token).build() }
+            Token.newBuilder().setValue(it.token).build()
         },
         exceptionHandler = { Token.getDefaultInstance() }
     )
