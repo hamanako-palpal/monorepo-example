@@ -18,3 +18,12 @@ services:
     depends_on:
       - pgdb
     command: ["up"]
+
+  migrate-securitytokens:
+    container_name: migrate-securitytokens
+    image: mybatis/migrations
+    volumes:
+      - "./db/migrations/securitytokens:/migration"
+    depends_on:
+      - pgdb
+    command: ["up"]
