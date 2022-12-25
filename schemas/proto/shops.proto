@@ -4,18 +4,6 @@ package com.pal2hmnk.example.generated.grpc.services;
 
 option java_multiple_files = true;
 
-service ShopService {
-  rpc FindShopInfo(ShopIdsRequest) returns (ShopInfos) {}
-}
-
-message ShopIdsRequest {
-  repeated ShopId ids = 1;
-}
-
-message ShopInfos {
-  repeated ShopInfo shops = 1;
-}
-
 message ShopId {
   int32 value = 1;
 }
@@ -23,4 +11,13 @@ message ShopId {
 message ShopInfo {
   ShopId id = 1;
   string name = 2;
+}
+
+message Role {
+  string role_key = 1;
+}
+
+message StaffInfo {
+  ShopId shopId = 1;
+  Role role = 2;
 }

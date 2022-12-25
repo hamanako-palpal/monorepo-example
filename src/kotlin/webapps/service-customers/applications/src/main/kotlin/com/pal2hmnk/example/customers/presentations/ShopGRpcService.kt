@@ -9,8 +9,8 @@ import com.pal2hmnk.example.shared.presentations.UseCaseRunner
 import org.lognet.springboot.grpc.GRpcService
 
 @GRpcService
-class ShopController(
-    private val scenario: FindShopsByIds,
+class ShopGRpcService(
+    scenario: FindShopsByIds,
 ) : ShopServiceGrpcKt.ShopServiceCoroutineImplBase() {
 
     private val useCaseRunner = UseCaseRunner(

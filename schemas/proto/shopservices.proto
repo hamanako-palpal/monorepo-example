@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.pal2hmnk.example.generated.grpc.services;
+
+import "services/shops.proto";
+
+option java_multiple_files = true;
+
+service ShopService {
+  rpc FindShopInfo(ShopIdsRequest) returns (ShopInfos) {}
+}
+
+message ShopIdsRequest {
+  repeated ShopId ids = 1;
+}
+
+message ShopInfos {
+  repeated ShopInfo shops = 1;
+}

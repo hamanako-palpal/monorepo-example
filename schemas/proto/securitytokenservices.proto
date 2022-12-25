@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package com.pal2hmnk.example.generated.grpc.services;
+
+import "services/users.proto";
+import "services/shops.proto";
+import "services/auth.proto";
+
+option java_multiple_files = true;
+
+service SecurityTokenService {
+  rpc FindToken(ConnectionId) returns (Jwt) {}
+  rpc GenerateToken(GenerateTokenRequest) returns (GenerateResult) {}
+}
+
+message GenerateTokenRequest {
+  ConnectionId id = 1;
+  UserId userId = 2;
+  repeated StaffInfo staffInfos = 3;
+}
+message GenerateResult {
+  enum Result {
+    CREARTED = 0;
+  }
+}

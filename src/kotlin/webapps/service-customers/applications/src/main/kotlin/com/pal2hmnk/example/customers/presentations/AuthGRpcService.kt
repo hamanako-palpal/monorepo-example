@@ -1,29 +1,30 @@
 package com.pal2hmnk.example.customers.presentations
 
-import com.pal2hmnk.example.customers.domains.values.Name
+import com.pal2hmnk.example.customers.domains.values.Email
 import com.pal2hmnk.example.customers.domains.values.Password
 import com.pal2hmnk.example.customers.usecases.Authenticate
 import com.pal2hmnk.example.generated.grpc.services.AuthServiceGrpcKt
-import com.pal2hmnk.example.generated.grpc.services.Token
+import com.pal2hmnk.example.generated.grpc.services.ConnectionId
 import com.pal2hmnk.example.generated.grpc.services.UserAuthInfo
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
 import org.lognet.springboot.grpc.GRpcService
 
 @GRpcService
-class AuthController(
+class AuthGRpcService(
     scenario: Authenticate,
 ) : AuthServiceGrpcKt.AuthServiceCoroutineImplBase() {
 
     private val useCaseRunner = UseCaseRunner(
-        transformer = { userAuthInfo : UserAuthInfo ->
-            Name(userAuthInfo.userName.value) to Password(userAuthInfo.password)
+        transformer = { userAuthInfo: UserAuthInfo ->
+            Email(userAuthInfo.email.value) to Password(userAuthInfo.password)
         },
         useCase = scenario::exec,
-        converter = {
-            Token.newBuilder().setValue(it.token).build()
+        converter = { authToken ->
+            ConnectionId.newBuilder().setValue(authToken.token).build()
         },
-        exceptionHandler = { Token.getDefaultInstance() }
+        exceptionHandler = { ConnectionId.getDefaultInstance() }
     )
 
-    override suspend fun findCredential(request: UserAuthInfo): Token = useCaseRunner.run(request)
+    override suspend fun authenticate(request: UserAuthInfo): ConnectionId =
+        useCaseRunner.run(request)
 }
