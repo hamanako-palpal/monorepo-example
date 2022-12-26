@@ -10,15 +10,15 @@ option java_multiple_files = true;
 
 service SecurityTokenService {
   rpc FindToken(ConnectionId) returns (Jwt) {}
-  rpc GenerateToken(GenerateTokenRequest) returns (GenerateResult) {}
+  rpc GenerateToken(GenerateTokenRequest) returns (ConnectionId) {}
 }
 
 message GenerateTokenRequest {
-  ConnectionId id = 1;
-  UserId userId = 2;
-  repeated StaffInfo staffInfos = 3;
+  UserId userId = 1;
+  repeated StaffInfo staffInfos = 2;
 }
 message GenerateResult {
+  Result res = 1;
   enum Result {
     CREARTED = 0;
   }

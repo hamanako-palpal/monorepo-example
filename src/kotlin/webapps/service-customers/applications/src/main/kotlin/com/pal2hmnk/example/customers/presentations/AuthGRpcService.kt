@@ -19,8 +19,8 @@ class AuthGRpcService(
             Email(userAuthInfo.email.value) to Password(userAuthInfo.password)
         },
         useCase = scenario::exec,
-        converter = { authToken ->
-            ConnectionId.newBuilder().setValue(authToken.token).build()
+        converter = { connectionId ->
+            ConnectionId.newBuilder().setValue(connectionId).build()
         },
         exceptionHandler = { ConnectionId.getDefaultInstance() }
     )

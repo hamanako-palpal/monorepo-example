@@ -1,9 +1,8 @@
 package com.pal2hmnk.example.customers.infrastructures
 
+import com.pal2hmnk.example.customers.domains.values.Email
 import com.pal2hmnk.example.customers.domains.values.Name
 import com.pal2hmnk.example.customers.infrastructures.persistence.exposed.Users
-import com.pal2hmnk.example.test.shared.PostgresContainer
-import io.kotest.core.config.AbstractProjectConfig
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import org.jetbrains.exposed.sql.SchemaUtils
