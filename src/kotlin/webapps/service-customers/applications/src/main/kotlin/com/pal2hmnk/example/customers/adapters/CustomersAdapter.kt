@@ -22,7 +22,7 @@ object CustomersAdapter {
     fun translate(user: User): UserInfo =
         UserInfo.newBuilder()
             .setId(user.userId)
-            .setName(user.name.value)
+            .setName(user.email.value)
             .build()
 
     private fun translate(shop: Shop): ShopInfo =
