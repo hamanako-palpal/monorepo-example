@@ -6,7 +6,7 @@ CREATE TABLE users (
 CREATE TABLE user_authentications (
   user_id              INT                    NOT NULL,
   email                VARCHAR(255)           NOT NULL,
-  password             VARCHAR(255)           NOT NULL,
+  password             VARCHAR(255)           NOT NULL
 );
 CREATE TABLE shops (
   id                   SERIAL                 NOT NULL,

@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+
 plugins {
     kotlin("plugin.spring") version "1.7.10"
     id("org.springframework.boot") version "2.7.6"
@@ -11,6 +14,7 @@ dependencies {
     val postgresClientVersion: String by project
     val exposedVersion: String by project
     val junitJupiterVersion: String by project
+    val kotestExtensionTestContainersVersion: String by project
     val kotestRunnerJunit5Version: String by project
     val argon2Version: String by project
     val jwtVersion: String by project
@@ -35,9 +39,20 @@ dependencies {
     implementation("org.jetbrains.exposed:spring-transaction:$exposedVersion")
     implementation("org.postgresql:postgresql:$postgresClientVersion")
     implementation("org.yaml:snakeyaml:$snakeYamlVersion")
+    testImplementation("com.ninja-squad:DbSetup-kotlin:2.1.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.2")
+    testImplementation("io.kotest.extensions:kotest-extensions-testcontainers:$kotestExtensionTestContainersVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestRunnerJunit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
+    testLogging {
+        events(TestLogEvent.FAILED, TestLogEvent.SKIPPED)
+        exceptionFormat = TestExceptionFormat.FULL
+        showCauses = true
+        showExceptions = true
+        showStackTraces = true
+    }
 }
