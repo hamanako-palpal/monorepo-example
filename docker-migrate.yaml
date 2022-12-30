@@ -19,11 +19,11 @@ services:
       - pgdb
     command: ["up"]
 
-  migrate-securitytokens:
-    container_name: migrate-securitytokens
+  migrate-permissions:
+    container_name: migrate-permissions
     image: mybatis/migrations
     volumes:
-      - "./db/migrations/securitytokens:/migration"
+      - "./db/migrations/permissions:/migration"
     depends_on:
       - pgdb
     command: ["up"]

@@ -15,7 +15,7 @@ db-base:
   FROM postgres:alpine
   COPY docker/create-database /docker-entrypoint-initdb.d/
   ENV POSTGRES_HOST_AUTH_METHOD=trust
-  ENV POSTGRES_MULTIPLE_DATABASES=db_contracts,db_customers,db_securitytokens
+  ENV POSTGRES_MULTIPLE_DATABASES=db_contracts,db_customers,db_permissions
   ENV POSTGRES_USER=app_user
   ENV POSTGRES_PASSWORD=password
   EXPOSE 5432

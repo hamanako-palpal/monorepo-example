@@ -15,7 +15,7 @@ services:
       - 5432:5432
     environment:
         - POSTGRES_HOST_AUTH_METHOD=trust
-        - POSTGRES_MULTIPLE_DATABASES=db_contracts,db_customers,db_securitytokens
+        - POSTGRES_MULTIPLE_DATABASES=db_contracts,db_customers,db_permissions
         - POSTGRES_USER=app_user
         - POSTGRES_PASSWORD=password
     volumes:

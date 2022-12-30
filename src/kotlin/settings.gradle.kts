@@ -8,8 +8,7 @@ include(
     "webapps:service-contracts:domains",
     "webapps:service-customers:applications",
     "webapps:service-customers:domains",
-    "webapps:service-securitytokens:applications",
-    "webapps:service-securitytokens:domains",
+    "webapps:service-permissions",
     "webapps:shared",
     "webapps:shared-test"
 )
