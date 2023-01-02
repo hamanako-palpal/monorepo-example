@@ -9,5 +9,11 @@ CREATE TABLE permissions (
 );
 CREATE TABLE role_permissions (
   role_key             VARCHAR(255)           NOT NULL,
-  permission_id        VARCHAR(255)           NOT NULL
+  permission_id        INT                    NOT NULL
+);
+CREATE TABLE refresh_tokens (
+  jti                  VARCHAR(255)           NOT NULL,
+  user_id              INT                    NOT NULL,
+  client_id            VARCHAR(255)           NOT NULL,
+  expired              TIMESTAMP              NOT NULL DEFAULT '1000-01-01 00:00:00'
 );

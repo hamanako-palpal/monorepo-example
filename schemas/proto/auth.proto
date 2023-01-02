@@ -4,10 +4,15 @@ package com.pal2hmnk.example.generated.grpc.services;
 
 option java_multiple_files = true;
 
-message ConnectionId {
+message Jwt {
   string value = 1;
 }
 
-message Jwt {
-  string value = 1;
+message TokenResult {
+  Result res = 1;
+  Jwt accessToken = 2;
+  Jwt refreshToken = 3;
+  enum Result {
+    CREARTED = 0;
+  }
 }

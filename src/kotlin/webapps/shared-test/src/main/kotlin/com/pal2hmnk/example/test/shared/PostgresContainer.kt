@@ -20,6 +20,7 @@ object PostgresContainer {
     }
 
     fun getJdbcUrl(): String = container.jdbcUrl
-    fun getUsername() = container.username
-    fun getPass() = container.password
+    fun getUsername(): String = container.username
+    fun getPass(): String = container.password
+    fun getDriverClassName(): String = container.driverClassName
 }

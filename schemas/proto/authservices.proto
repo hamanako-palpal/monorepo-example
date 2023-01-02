@@ -8,7 +8,7 @@ import "services/auth.proto";
 option java_multiple_files = true;
 
 service AuthService {
-  rpc Authenticate(UserAuthInfo) returns (ConnectionId) {}
+  rpc Authenticate(UserAuthInfo) returns (TokenResult) {}
 }
 
 message UserAuthInfo {

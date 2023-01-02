@@ -29,6 +29,8 @@ val jwtVersion: String by extra("4.2.1")
 
 val testcontainersVersion: String by extra("1.17.6")
 val junitJupiterVersion: String by extra("5.9.1")
+val dbSetupKotlinVersion: String by extra("2.1.0")
+val kotestExtensionSpringVersion: String by extra("1.1.2")
 val kotestExtensionTestContainersVersion: String by extra("1.3.4")
 val kotestRunnerJunit5Version: String by extra("5.5.4")
 val grpcTestingVersion: String by extra("1.48.1")

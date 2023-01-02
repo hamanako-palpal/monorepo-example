@@ -1,3 +1,3 @@
 package com.pal2hmnk.example.permissions.domains.values
 
-class Permission(val name: String)
+data class Permission(val name: String)

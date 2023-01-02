@@ -3,20 +3,13 @@ package com.pal2hmnk.example.permissions.domains.entities
 import com.pal2hmnk.example.permissions.domains.values.Role
 import com.pal2hmnk.example.permissions.domains.values.ShopId
 import com.pal2hmnk.example.permissions.domains.values.UserId
-import java.time.LocalDateTime
 
 class SecurityToken(
-    val userId: UserId,
-    val stuffInfos: List<Pair<ShopId, Role>>,
+    userId: UserId,
+    stuffInfos: List<Pair<ShopId, Role>>,
+    clientId: String,
 ) {
-    val expired: LocalDateTime = LocalDateTime.now().plusMinutes(30)
-    val connectionId: String = generateCode(50)
-
-    companion object {
-        private val charset = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-        fun generateCode(count: Int): String =
-            (1..count)
-                .map { charset.random() }
-                .joinToString(separator = "")
-    }
+    val accessToken = AccessToken(userId, clientId, listOf("customers", "contracts"))
+    val idToken = IdToken(userId, stuffInfos, clientId, listOf("customers", "contracts"))
+    val refreshToken = RefreshToken(userId, clientId, listOf("customers", "contracts"))
 }
