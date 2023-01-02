@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component
 @Component
 class AccessTokenIssuerImpl : AccessTokenIssuer {
     override fun issue(token: AccessToken): String =
-        JwtIssuer(token).doIssue(withAudiences(token))
+        JwtIssuer(token).doIssue(withCustomClaim(token))
 
-    private fun withAudiences(accessToken: AccessToken): JWTCreator.Builder.() ->Unit = {
+    private fun withCustomClaim(accessToken: AccessToken): JWTCreator.Builder.() ->Unit = {
         withAudience(*accessToken.audience.toTypedArray())
     }
 }
