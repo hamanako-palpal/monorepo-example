@@ -1,6 +1,11 @@
 VERSION 0.6
 FROM gradle:6.9-jdk11
 
+build-image:
+  COPY . .
+  WORKDIR src/kotlin
+  RUN gradle webapps:service-permissions:bootRun
+
 test-customers:
   COPY . .
 # VOLUME /var/run/docker.sock:/var/run/docker.sock
@@ -21,7 +26,7 @@ db-base:
   EXPOSE 5432
   RUN chmod 777 /docker-entrypoint-initdb.d/
 
-redis:
+redis-base:
   FROM redis:6.2
   EXPOSE 6379
 
@@ -29,12 +34,12 @@ middlewares-run:
   LOCALLY
   WITH DOCKER \
       --load db-base:latest=+db-base \
-      --load redis:latest=+redis
+      --load redis-base:latest=+redis-base
     RUN docker network create example-network && \
       docker run -d --net=example-network --net-alias=db \
         --name example-postgres -p 5432:5432 --rm db-base:latest && \
       docker run -d --net=example-network --net-alias=redis \
-        --name example-redis -p 6379:6379 --rm redis:latest
+        --name example-redis -p 6379:6379 --rm redis-base:latest
   END
 
 # migrate-contracts:
