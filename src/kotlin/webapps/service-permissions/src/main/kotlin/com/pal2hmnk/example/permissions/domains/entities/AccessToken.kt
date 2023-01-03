@@ -9,4 +9,6 @@ class AccessToken(
     override val audience: List<String>,
     override val created: LocalDateTime = LocalDateTime.now(),
     override val expired: LocalDateTime = LocalDateTime.now().plusDays(30),
-) : Token()
+) : Token() {
+    fun getKey() = "at_$jti"
+}

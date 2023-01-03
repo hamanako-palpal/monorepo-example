@@ -8,6 +8,7 @@ import com.pal2hmnk.example.permissions.domains.entities.SecurityToken
 import com.pal2hmnk.example.permissions.domains.entities.SecurityTokenRepository
 import com.pal2hmnk.example.permissions.infrastructure.persistance.exposed.RefreshTokens
 import com.pal2hmnk.example.permissions.infrastructure.persistance.redis.RedisSecurityTokenRepository
+import com.pal2hmnk.example.shared.utils.DateConverter
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.springframework.stereotype.Repository
@@ -27,14 +28,16 @@ class SecurityTokenRepositoryImpl(
 
     private fun doStore(accessToken: AccessToken) =
         redisSecurityTokenRepository.store(
-            "at_${accessToken.jti}",
+            accessToken.getKey(),
             accessToken.userId.value.toString(),
+            DateConverter.localDateTimeToDate(accessToken.expired),
         )
 
     private fun doStore(idToken: IdToken, issuedToken: String) =
         redisSecurityTokenRepository.store(
-            "it_${idToken.userId.value}",
+            idToken.getKey(),
             issuedToken,
+            DateConverter.localDateTimeToDate(idToken.expired),
         )
 
     private fun doStore(refreshToken: RefreshToken) {
