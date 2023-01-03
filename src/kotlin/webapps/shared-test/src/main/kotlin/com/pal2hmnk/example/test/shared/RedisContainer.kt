@@ -5,7 +5,7 @@ import org.testcontainers.utility.DockerImageName
 
 object RedisContainer {
     private val redis = GenericContainer(
-        DockerImageName.parse("redis:7.0.7-alpine")
+        DockerImageName.parse("redis:6.2")
     )
         .withExposedPorts(6379)
 
