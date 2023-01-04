@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.infrastructure
+package com.pal2hmnk.example.permissions.infrastructures
 
 import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTCreator

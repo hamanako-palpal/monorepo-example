@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.config
+package com.pal2hmnk.example.permissions.configurations
 
 import com.pal2hmnk.example.test.shared.PostgresContainer
 import com.pal2hmnk.example.test.shared.RedisContainer

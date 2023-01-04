@@ -1,10 +1,10 @@
-package com.pal2hmnk.example.permissions.infrastructure
+package com.pal2hmnk.example.permissions.infrastructures
 
 import com.ninja_squad.dbsetup_kotlin.dbSetup
-import com.pal2hmnk.example.permissions.config.KotestProjectConfig
+import com.pal2hmnk.example.permissions.configurations.KotestProjectConfig
 import com.pal2hmnk.example.permissions.domains.values.Role
-import com.pal2hmnk.example.permissions.infrastructure.persistance.exposed.Permissions
-import com.pal2hmnk.example.permissions.infrastructure.persistance.exposed.RolePermissions
+import com.pal2hmnk.example.permissions.infrastructures.persistance.exposed.Permissions
+import com.pal2hmnk.example.permissions.infrastructures.persistance.exposed.RolePermissions
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldContainExactly
 import kotlinx.coroutines.Dispatchers

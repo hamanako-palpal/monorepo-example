@@ -1,14 +1,14 @@
-package com.pal2hmnk.example.permissions.infrastructure
+package com.pal2hmnk.example.permissions.infrastructures
 
 import com.ninja_squad.dbsetup_kotlin.dbSetup
-import com.pal2hmnk.example.permissions.config.KotestProjectConfig
+import com.pal2hmnk.example.permissions.configurations.KotestProjectConfig
 import com.pal2hmnk.example.permissions.domains.entities.IssuedSecurityToken
 import com.pal2hmnk.example.permissions.domains.entities.SecurityToken
 import com.pal2hmnk.example.permissions.domains.entities.SecurityTokenRepository
 import com.pal2hmnk.example.permissions.domains.values.Role
 import com.pal2hmnk.example.permissions.domains.values.ShopId
 import com.pal2hmnk.example.permissions.domains.values.UserId
-import com.pal2hmnk.example.permissions.infrastructure.persistance.exposed.RefreshTokens
+import com.pal2hmnk.example.permissions.infrastructures.persistance.exposed.RefreshTokens
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import org.jetbrains.exposed.sql.selectAll

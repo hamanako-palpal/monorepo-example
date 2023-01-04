@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.infrastructure.persistance.redis
+package com.pal2hmnk.example.permissions.infrastructures.persistance.redis
 
 import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.stereotype.Component

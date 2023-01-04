@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.infrastructure.persistance.exposed
+package com.pal2hmnk.example.permissions.infrastructures.persistance.exposed
 
 import org.jetbrains.exposed.sql.Table
 

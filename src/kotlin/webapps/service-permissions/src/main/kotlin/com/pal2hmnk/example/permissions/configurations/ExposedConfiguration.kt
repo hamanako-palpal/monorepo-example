@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.config
+package com.pal2hmnk.example.permissions.configurations
 
 import org.jetbrains.exposed.spring.SpringTransactionManager
 import org.springframework.context.annotation.Bean

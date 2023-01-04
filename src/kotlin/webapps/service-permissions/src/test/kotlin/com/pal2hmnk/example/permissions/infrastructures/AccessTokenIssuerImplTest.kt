@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.infrastructure
+package com.pal2hmnk.example.permissions.infrastructures
 
 import com.pal2hmnk.example.permissions.domains.entities.AccessToken
 import com.pal2hmnk.example.permissions.domains.values.UserId

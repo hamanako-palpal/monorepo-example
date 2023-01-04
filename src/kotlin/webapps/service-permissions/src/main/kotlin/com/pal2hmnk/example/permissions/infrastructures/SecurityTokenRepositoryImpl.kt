@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.permissions.infrastructure
+package com.pal2hmnk.example.permissions.infrastructures
 
 import com.pal2hmnk.example.permissions.domains.entities.AccessToken
 import com.pal2hmnk.example.permissions.domains.entities.IdToken
@@ -6,8 +6,8 @@ import com.pal2hmnk.example.permissions.domains.entities.IssuedSecurityToken
 import com.pal2hmnk.example.permissions.domains.entities.RefreshToken
 import com.pal2hmnk.example.permissions.domains.entities.SecurityToken
 import com.pal2hmnk.example.permissions.domains.entities.SecurityTokenRepository
-import com.pal2hmnk.example.permissions.infrastructure.persistance.exposed.RefreshTokens
-import com.pal2hmnk.example.permissions.infrastructure.persistance.redis.RedisSecurityTokenRepository
+import com.pal2hmnk.example.permissions.infrastructures.persistance.exposed.RefreshTokens
+import com.pal2hmnk.example.permissions.infrastructures.persistance.redis.RedisSecurityTokenRepository
 import com.pal2hmnk.example.shared.utils.DateConverter
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.transactions.transaction

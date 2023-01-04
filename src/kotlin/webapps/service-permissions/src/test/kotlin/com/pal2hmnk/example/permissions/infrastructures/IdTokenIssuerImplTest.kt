@@ -1,7 +1,7 @@
-package com.pal2hmnk.example.permissions.infrastructure
+package com.pal2hmnk.example.permissions.infrastructures
 
 import com.ninja_squad.dbsetup_kotlin.dbSetup
-import com.pal2hmnk.example.permissions.config.KotestProjectConfig
+import com.pal2hmnk.example.permissions.configurations.KotestProjectConfig
 import com.pal2hmnk.example.permissions.domains.entities.IdToken
 import com.pal2hmnk.example.permissions.domains.values.Role
 import com.pal2hmnk.example.permissions.domains.values.ShopId
