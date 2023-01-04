@@ -1,6 +1,6 @@
 package com.pal2hmnk.example.contracts.adapters
 
-import com.pal2hmnk.example.contracts.usecases.OrderHistoryOutputData
+import com.pal2hmnk.example.contracts.domains.usecases.OrderHistoryOutputData
 import com.pal2hmnk.example.generated.grpc.services.OrderHistory
 import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.generated.grpc.services.ShopId

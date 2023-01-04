@@ -9,7 +9,7 @@ build-image:
 test-customers:
   COPY . .
 # VOLUME /var/run/docker.sock:/var/run/docker.sock
-  RUN cp -R schemas/db/customers/ddl/ddl.sql src/kotlin/webapps/service-customers/applications/src/test/resources/ddl.sql
+  RUN cp -R schemas/db/customers/ddl/ddl.sql src/kotlin/webapps/service-customers/src/test/resources/ddl.sql
   WORKDIR src/kotlin
   RUN gradle clean withSchemaChange libs:generated:proto:generateProto
   WITH DOCKER

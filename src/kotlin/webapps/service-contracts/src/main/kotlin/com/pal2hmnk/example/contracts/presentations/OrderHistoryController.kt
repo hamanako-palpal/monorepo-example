@@ -1,7 +1,7 @@
 package com.pal2hmnk.example.contracts.presentations
 
 import com.pal2hmnk.example.contracts.adapters.ContractsAdapter
-import com.pal2hmnk.example.contracts.usecases.FindOrderHistory
+import com.pal2hmnk.example.contracts.domains.usecases.FindOrderHistory
 import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.generated.grpc.services.OrderServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.UserId

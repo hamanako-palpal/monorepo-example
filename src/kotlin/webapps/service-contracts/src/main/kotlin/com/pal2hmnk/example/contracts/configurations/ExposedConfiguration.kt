@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.contracts.config
+package com.pal2hmnk.example.contracts.configurations
 
 import org.jetbrains.exposed.spring.SpringTransactionManager
 import org.springframework.context.annotation.Bean
