@@ -1,4 +1,4 @@
-package com.pal2hmnk.example.gateway.usecaes
+package com.pal2hmnk.example.gateway.domains.usecaes
 
 import com.pal2hmnk.example.gateway.domains.querymodels.OrderHistoryQueryService
 import kotlinx.coroutines.runBlocking

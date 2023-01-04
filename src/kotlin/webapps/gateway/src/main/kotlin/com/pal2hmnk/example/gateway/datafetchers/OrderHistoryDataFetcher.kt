@@ -3,8 +3,8 @@ package com.pal2hmnk.example.gateway.datafetchers
 import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsQuery
 import com.netflix.graphql.dgs.InputArgument
-import com.pal2hmnk.example.gateway.usecaes.OrderHistoryOutputData
-import com.pal2hmnk.example.gateway.usecaes.FindOrderHistoriesByUserName
+import com.pal2hmnk.example.gateway.domains.usecaes.OrderHistoryOutputData
+import com.pal2hmnk.example.gateway.domains.usecaes.FindOrderHistoriesByUserName
 import com.pal2hmnk.example.generated.graphql.types.Order
 import com.pal2hmnk.example.generated.graphql.types.OrderHistory
 import com.pal2hmnk.example.generated.graphql.types.Shop
