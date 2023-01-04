@@ -6,8 +6,7 @@ include(
     "webapps:gateway:domains",
     "webapps:service-contracts:applications",
     "webapps:service-contracts:domains",
-    "webapps:service-customers:applications",
-    "webapps:service-customers:domains",
+    "webapps:service-customers",
     "webapps:service-permissions",
     "webapps:shared",
     "webapps:shared-test"
