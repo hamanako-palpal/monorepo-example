@@ -36,7 +36,7 @@ class SecurityTokenRepositoryImplTest(
     test("insert test") {
         val securityToken = SecurityToken(
             userId = UserId(1000),
-            stuffInfos = listOf(ShopId(1000) to Role("manager")),
+            stuffInfo = ShopId(1000) to Role("manager"),
             "test",
         )
         val issuedToken = IssuedSecurityToken(

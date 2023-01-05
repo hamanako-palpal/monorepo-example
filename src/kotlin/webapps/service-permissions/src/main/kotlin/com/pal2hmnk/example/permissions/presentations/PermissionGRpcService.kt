@@ -21,9 +21,7 @@ class PermissionGRpcService(
             transformer = { req: GenerateTokenRequest ->
                 SecurityToken(
                     userId = UserId(req.userId.value),
-                    stuffInfos = req.staffInfosList.map { staffInfo ->
-                        ShopId(staffInfo.shopId.value) to Role(staffInfo.role.roleKey)
-                    },
+                    stuffInfo = ShopId(req.staffInfo.shopId.value) to Role(req.staffInfo.role.roleKey),
                     "gateway",
                 )
             },

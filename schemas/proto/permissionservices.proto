@@ -16,5 +16,5 @@ service PermissionService {
 
 message GenerateTokenRequest {
   UserId userId = 1;
-  repeated StaffInfo staffInfos = 2;
+  StaffInfo staffInfo = 2;
 }

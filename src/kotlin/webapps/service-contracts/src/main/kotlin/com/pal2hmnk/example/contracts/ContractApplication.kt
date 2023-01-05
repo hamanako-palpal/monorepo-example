@@ -4,9 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class RootApplication
+class ContractApplication
 
 fun main(args: Array<String>) {
-    runApplication<RootApplication>(*args)
+    runApplication<ContractApplication>(*args)
 }
 

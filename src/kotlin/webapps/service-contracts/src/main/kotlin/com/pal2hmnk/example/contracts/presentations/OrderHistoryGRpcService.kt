@@ -7,9 +7,10 @@ import com.pal2hmnk.example.generated.grpc.services.OrderServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.UserId
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
 import org.lognet.springboot.grpc.GRpcService
+import org.springframework.security.access.prepost.PreAuthorize
 
 @GRpcService
-class OrderHistoryController(
+class OrderHistoryGRpcService(
     private val scenario: FindOrderHistory
 ) : OrderServiceGrpcKt.OrderServiceCoroutineImplBase() {
 
@@ -19,5 +20,7 @@ class OrderHistoryController(
         converter = ContractsAdapter::translate,
         exceptionHandler = { OrderHistoryList.getDefaultInstance() }
     )
-    override suspend fun findOrderHistory(request: UserId): OrderHistoryList = useCaseRunner.run(request)
+    @PreAuthorize("hasRole('findOrderHistory')")
+    override suspend fun findOrderHistory(request: UserId): OrderHistoryList =
+        useCaseRunner.run(request)
 }

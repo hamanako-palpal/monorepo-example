@@ -10,6 +10,7 @@ dependencies {
     val postgresClientVersion: String by project
     val exposedVersion: String by project
     val junitJupiterVersion: String by project
+    val jwtVersion: String by project
     val kotestRunnerJunit5Version: String by project
     val snakeYamlVersion: String by project
 
@@ -17,7 +18,9 @@ dependencies {
     implementation(project(":webapps:shared"))
     testImplementation(project(":webapps:shared-test"))
 
+    implementation("com.auth0:java-jwt:$jwtVersion")
     implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")

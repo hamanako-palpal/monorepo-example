@@ -6,10 +6,10 @@ import com.pal2hmnk.example.permissions.domains.values.UserId
 
 class SecurityToken(
     userId: UserId,
-    stuffInfos: List<Pair<ShopId, Role>>,
+    stuffInfo: Pair<ShopId, Role>,
     clientId: String,
 ) {
     val accessToken = AccessToken(userId, clientId, listOf("customers", "contracts"))
-    val idToken = IdToken(userId, stuffInfos, clientId, listOf("customers", "contracts"))
+    val idToken = IdToken(userId, stuffInfo, clientId, listOf("customers", "contracts"))
     val refreshToken = RefreshToken(userId, clientId, listOf("customers", "contracts"))
 }
