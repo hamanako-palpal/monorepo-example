@@ -1,8 +1,13 @@
 package com.pal2hmnk.example.permissions.infrastructures
 
+import com.auth0.jwt.JWT
+import com.auth0.jwt.JWTVerifier
+import com.auth0.jwt.algorithms.Algorithm
 import com.pal2hmnk.example.permissions.domains.entities.AccessToken
 import com.pal2hmnk.example.permissions.domains.values.UserId
 import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.collections.shouldContainAll
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import java.util.Base64
 
@@ -13,20 +18,17 @@ class AccessTokenIssuerImplTest : FunSpec({
             "gateway",
             listOf("customers","contracts"),
         )
-        val decode = { it : String ->
-            Base64.getDecoder().decode(it.toByteArray()).toString(Charsets.UTF_8)
-        }
         val issued = AccessTokenIssuerImpl().issue(token)
-        val jwt = issued.split(".")
-        decode(jwt[0]).also { header ->
-            header shouldContain "\"kid\":\"keyId\""
-            header shouldContain "\"typ\":\"JWT\""
-            header shouldContain "\"alg\":\"HS256\""
-        }
-        decode(jwt[1]).also { payload ->
-            payload shouldContain "\"sub\":\"1000\""
-            payload shouldContain "\"aud\":[\"customers\",\"contracts\"]"
-            payload shouldContain "\"iss\":\"permissions\""
+        val algorithm = Algorithm.HMAC256("secret")
+        val verifier = JWT.require(algorithm)
+            .withIssuer("permissions")
+            .build()
+        verifier.verify(issued).also {
+            it.keyId shouldBe "keyId"
+            it.type shouldBe "JWT"
+            it.algorithm shouldBe "HS256"
+            it.subject shouldBe "1000"
+            it.audience shouldContainAll listOf("customers", "contracts")
         }
     }
 })

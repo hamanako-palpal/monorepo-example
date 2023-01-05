@@ -16,14 +16,12 @@ class IdTokenIssuerImpl(
 
     private fun withCustomClaim(token: IdToken): JWTCreator.Builder.() -> Unit = {
         val permissionMap = permissionMapper.findByRoles()
-        withClaim(
-            "stuffInfo",
-            token.stuffInfos.map { (shopId, role) ->
-                mapOf(
-                    "shopId" to shopId.value,
-                    "permissions" to permissionMap[role]!!.map(Permission::name)
-                )
-            })
+        val (shopId, role) = token.stuffInfo
+        withClaim("shopId", shopId.value)
+        withArrayClaim(
+            "permissions",
+            permissionMap[role]!!.map(Permission::name).toTypedArray()
+        )
         withAudience(*token.audience.toTypedArray())
     }
 }
