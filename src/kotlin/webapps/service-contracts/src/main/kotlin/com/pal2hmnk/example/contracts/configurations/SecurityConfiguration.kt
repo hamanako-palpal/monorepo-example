@@ -36,6 +36,7 @@ class SecurityConfiguration {
             .authorizeExchange()
             .anyExchange()
             .authenticated()
+
             .and()
             .build()
     }

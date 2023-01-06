@@ -6,6 +6,7 @@ import com.pal2hmnk.example.generated.grpc.services.PermissionServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.TokenResult
 import com.pal2hmnk.example.permissions.domains.entities.SecurityToken
 import com.pal2hmnk.example.permissions.domains.usecases.GenerateToken
+import com.pal2hmnk.example.permissions.domains.usecases.GetIdToken
 import com.pal2hmnk.example.permissions.domains.values.Role
 import com.pal2hmnk.example.permissions.domains.values.ShopId
 import com.pal2hmnk.example.permissions.domains.values.UserId
@@ -14,8 +15,17 @@ import org.lognet.springboot.grpc.GRpcService
 
 @GRpcService
 class PermissionGRpcService(
-    private val scenario: GenerateToken
+    private val getIdToken: GetIdToken,
+    private val generateToken: GenerateToken,
 ) : PermissionServiceGrpcKt.PermissionServiceCoroutineImplBase() {
+    override suspend fun getIdToken(request: Jwt): Jwt =
+        UseCaseRunner(
+            transformer = { it : Jwt -> it.value },
+            useCase = getIdToken::exec,
+            converter = { Jwt.newBuilder().setValue(it).build() },
+            exceptionHandler = { Jwt.getDefaultInstance() },
+        ).run(request)
+
     override suspend fun internalGenerateToken(request: GenerateTokenRequest): TokenResult =
         UseCaseRunner(
             transformer = { req: GenerateTokenRequest ->
@@ -25,7 +35,7 @@ class PermissionGRpcService(
                     "gateway",
                 )
             },
-            useCase = scenario::exec,
+            useCase = generateToken::exec,
             converter = {
                 TokenResult.newBuilder()
                     .setRes(TokenResult.Result.CREARTED)

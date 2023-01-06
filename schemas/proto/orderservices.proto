@@ -4,7 +4,8 @@ package com.pal2hmnk.example.generated.grpc.services;
 
 import "services/users.proto";
 import "services/orders.proto";
+import "google/protobuf/empty.proto";
 
 service OrderService {
-  rpc FindOrderHistory (UserId) returns (OrderHistoryList) {}
+  rpc FindOrderHistory (google.protobuf.Empty) returns (OrderHistoryList) {}
 }

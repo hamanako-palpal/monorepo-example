@@ -1,5 +1,6 @@
 package com.pal2hmnk.example.gateway.infrastructures.grpc.clients
 
+import com.google.protobuf.Empty
 import com.pal2hmnk.example.gateway.domains.values.UserId
 import com.pal2hmnk.example.gateway.infrastructures.grpc.GrpcClient
 import com.pal2hmnk.example.gateway.infrastructures.grpc.configs.GrpcClientConfig
@@ -18,7 +19,7 @@ class ContractsGrpcClient(
     )
     private val orderStub = OrderServiceGrpcKt.OrderServiceCoroutineStub(channel)
     suspend fun findBy(id: UserId): OrderHistoryList {
-        val request = GrpcFactory.userId().setValue(id.value).build()
-        return orderStub.findOrderHistory(request)
+        val empty = Empty.newBuilder().build()
+        return orderStub.findOrderHistory(empty)
     }
 }

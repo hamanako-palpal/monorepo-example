@@ -12,4 +12,8 @@ class RedisSecurityTokenRepository(
         redisTemplate.opsForValue().set(key, value)
         redisTemplate.expireAt(key, expire)
     }
+
+    fun find(key: String): String? {
+        return redisTemplate.opsForValue().get(key)
+    }
 }
