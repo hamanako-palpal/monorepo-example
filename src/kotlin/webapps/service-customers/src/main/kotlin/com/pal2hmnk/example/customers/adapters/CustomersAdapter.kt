@@ -21,7 +21,7 @@ object CustomersAdapter {
 
     fun translate(user: User): UserInfo =
         UserInfo.newBuilder()
-            .setId(user.userId)
+            .setId(user.userId!!.value)
             .setName(user.email.value)
             .build()
 

@@ -4,3 +4,11 @@ spring:
     username: app_user
     password: password
     driverClassName: org.postgresql.Driver
+grpc:
+  port: 50051
+server:
+  port: 8081
+  http2:
+    enabled: true
+  ssl:
+    enabled: false

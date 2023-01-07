@@ -8,4 +8,10 @@ option java_multiple_files = true;
 
 service UserService {
   rpc FindUserInfoByName(UserName) returns (UserInfo) {}
+  rpc SignUp(SignUpRequest) returns (UserInfo) {}
+}
+
+message SignUpRequest {
+  UserAuthInfo authInfo = 1;
+  UserName name = 2;
 }

@@ -2,7 +2,7 @@ package com.pal2hmnk.example.customers.presentations
 
 import com.pal2hmnk.example.customers.domains.usecases.Authenticate
 import com.pal2hmnk.example.customers.domains.values.Email
-import com.pal2hmnk.example.customers.domains.values.Password
+import com.pal2hmnk.example.customers.domains.entities.PasswordRow
 import com.pal2hmnk.example.generated.grpc.services.AuthServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.Jwt
 import com.pal2hmnk.example.generated.grpc.services.TokenResult
@@ -17,7 +17,7 @@ class AuthGRpcService(
 
     private val useCaseRunner = UseCaseRunner(
         transformer = { userAuthInfo: UserAuthInfo ->
-            Email(userAuthInfo.email.value) to Password(userAuthInfo.password)
+            Email(userAuthInfo.email.value) to PasswordRow(userAuthInfo.password)
         },
         useCase = scenario::exec,
         converter = {

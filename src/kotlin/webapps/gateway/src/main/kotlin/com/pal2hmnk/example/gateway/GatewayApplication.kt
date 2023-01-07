@@ -6,8 +6,8 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-class RootApplication
+class GatewayApplication
 
 fun main(args: Array<String>) {
-    runApplication<RootApplication>(*args)
+    runApplication<GatewayApplication>(*args)
 }

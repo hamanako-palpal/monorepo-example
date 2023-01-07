@@ -9,3 +9,9 @@ spring:
     port: 6379
     password: null
     database: 0
+server:
+  port: 50053
+  http2:
+    enabled: true
+  ssl:
+    enabled: false

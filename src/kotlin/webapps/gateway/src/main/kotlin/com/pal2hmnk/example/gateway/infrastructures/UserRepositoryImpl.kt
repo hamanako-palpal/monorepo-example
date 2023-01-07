@@ -11,4 +11,7 @@ class UserRepositoryImpl(
 ) : UserRepository {
     override suspend fun findUserInfo(name: String): User =
         customersGrpcClient.findUserInfo(name)
+
+    override suspend fun signUp(userName: String, password: String, email: String): User =
+        customersGrpcClient.signUp(userName, password, email)
 }

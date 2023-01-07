@@ -10,8 +10,3 @@ option java_multiple_files = true;
 service AuthService {
   rpc Authenticate(UserAuthInfo) returns (TokenResult) {}
 }
-
-message UserAuthInfo {
-  Email email = 1;
-  string password = 2;
-}
