@@ -1,11 +1,11 @@
 package com.pal2hmnk.example.customers.adapters
 
 import com.pal2hmnk.example.customers.domains.entities.Shop
-import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.generated.grpc.services.ShopId
 import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 import com.pal2hmnk.example.generated.grpc.services.ShopInfo
 import com.pal2hmnk.example.generated.grpc.services.ShopInfos
+import com.pal2hmnk.example.generated.grpc.services.UserId
 import com.pal2hmnk.example.generated.grpc.services.UserInfo
 import com.pal2hmnk.example.customers.domains.values.ShopId as ShopIdDomain
 
@@ -15,19 +15,25 @@ object CustomersAdapter {
 
     fun translate(shopList: List<Shop>): ShopInfos = ShopInfos.newBuilder().also {
         shopList.forEachIndexed { idx, shop ->
-            it.setShops(idx, translate(shop))
+            it.setShops(idx, shop.asGRpc())
         }
     }.build()
-
-    fun translate(user: User): UserInfo =
-        UserInfo.newBuilder()
-            .setId(user.userId!!.value)
-            .setName(user.email.value)
-            .build()
-
-    private fun translate(shop: Shop): ShopInfo =
-        ShopInfo.newBuilder()
-            .setId(ShopId.newBuilder().setValue(shop.shopId()))
-            .setName(shop.shopName())
-            .build()
 }
+
+fun com.pal2hmnk.example.customers.domains.values.UserId.asGRpc(): UserId =
+    UserId.newBuilder().setValue(this.value).build()
+
+fun com.pal2hmnk.example.customers.domains.values.ShopId.asGRpc(): ShopId =
+    ShopId.newBuilder().setValue(this.value).build()
+
+fun com.pal2hmnk.example.customers.domains.entities.User.asGrpc(): UserInfo =
+    UserInfo.newBuilder()
+        .setId(this.userId!!.value)
+        .setName(this.email.value)
+        .build()
+
+fun Shop.asGRpc(): ShopInfo =
+    ShopInfo.newBuilder()
+        .setId(id.asGRpc())
+        .setName(shopName.value)
+        .build()

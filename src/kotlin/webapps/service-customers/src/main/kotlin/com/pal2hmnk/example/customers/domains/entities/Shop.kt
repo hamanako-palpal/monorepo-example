@@ -7,9 +7,6 @@ class Shop(
     val id: ShopId,
     val shopName: Name,
 ) {
-    fun shopId() = id.value
-    fun shopName() = shopName.value
-
     companion object {
         fun of(id: Int,  shopName: String) =
             Shop(ShopId(id), Name(shopName))

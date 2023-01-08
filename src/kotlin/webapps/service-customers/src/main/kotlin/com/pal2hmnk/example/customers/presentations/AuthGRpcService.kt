@@ -22,7 +22,7 @@ class AuthGRpcService(
         useCase = scenario::exec,
         converter = {
             TokenResult.newBuilder()
-                .setAccessToken(Jwt.newBuilder().setValue(it))
+                .setAccessToken(Jwt.newBuilder().setValue(it.value))
                 .build()
         },
         exceptionHandler = { TokenResult.getDefaultInstance() }

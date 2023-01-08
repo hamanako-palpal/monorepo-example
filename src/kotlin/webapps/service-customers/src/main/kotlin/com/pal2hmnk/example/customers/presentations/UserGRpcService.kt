@@ -1,7 +1,8 @@
 package com.pal2hmnk.example.customers.presentations
 
-import com.pal2hmnk.example.customers.adapters.CustomersAdapter
+import com.pal2hmnk.example.customers.adapters.asGrpc
 import com.pal2hmnk.example.customers.domains.entities.PasswordRow
+import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.customers.domains.usecases.FindUserByName
 import com.pal2hmnk.example.customers.domains.usecases.SignUp
 import com.pal2hmnk.example.customers.domains.values.Email
@@ -22,7 +23,7 @@ class UserGRpcService(
         UseCaseRunner(
             transformer = UserName::getValue,
             useCase = findUserByName::exec,
-            converter = CustomersAdapter::translate,
+            converter = User::asGrpc,
             exceptionHandler = { UserInfo.getDefaultInstance() }
         ).run(request)
 
@@ -34,12 +35,7 @@ class UserGRpcService(
             useCase = { (name, email, pass) ->
                 signUp.exec(name, PasswordRow(pass), Email(email))
             },
-            converter = {
-                UserInfo.newBuilder()
-                    .setId(it.userId!!.value)
-                    .setName(it.name)
-                    .build()
-            },
+            converter = User::asGrpc,
             exceptionHandler = { UserInfo.getDefaultInstance() }
         ).run(request)
     }

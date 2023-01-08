@@ -6,6 +6,7 @@ import com.pal2hmnk.example.customers.domains.entities.PasswordHashedRepository
 import com.pal2hmnk.example.customers.domains.entities.UserAuthenticationRepository
 import com.pal2hmnk.example.customers.domains.values.Email
 import com.pal2hmnk.example.customers.domains.entities.PasswordRow
+import com.pal2hmnk.example.customers.domains.entities.Stuff
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,6 +23,6 @@ class AuthenticateImpl(
         ) {
             return null
         }
-        return accessTokenRepository.save(user.userId)
+        return accessTokenRepository.save(Stuff(user.userId))
     }
 }

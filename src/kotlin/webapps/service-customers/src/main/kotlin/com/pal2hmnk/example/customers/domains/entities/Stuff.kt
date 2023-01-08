@@ -5,6 +5,6 @@ import com.pal2hmnk.example.customers.domains.values.UserId
 
 data class Stuff(
     val userId: UserId,
-    val shopId: ShopId,
-    val role: String,
+    val shopId: ShopId? = null,
+    val role: String? = null,
 )
