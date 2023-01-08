@@ -14,9 +14,15 @@ import org.springframework.stereotype.Repository
 class AccessTokenRepositoryImpl(
     private val permissionsClient: PermissionsClient
 ) : AccessTokenRepository {
+    override fun save(userId: com.pal2hmnk.example.customers.domains.values.UserId): AccessToken {
+        return permissionsClient.issue {
+            setUserId(UserId.newBuilder().setValue(userId.value))
+        }.let { AccessToken(it.accessToken.value) }
+    }
+
     override fun save(stuff: Stuff): AccessToken {
         return permissionsClient.issue {
-            setUserId(UserId.newBuilder().setValue(stuff.user.userId!!.value))
+            setUserId(UserId.newBuilder().setValue(stuff.userId.value))
             setStaffInfo(
                 StaffInfo.newBuilder()
                     .setShopId(ShopId.newBuilder().setValue(stuff.shopId.value))
