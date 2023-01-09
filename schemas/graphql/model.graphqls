@@ -1,12 +1,3 @@
-type Query {
-    orderHistory(name: String!): OrderHistory
-}
-
-type Mutation {
-    order(userName: String!, shopName: String!): Result
-    signUp(userName: String!, email: String!, password: String!): User
-}
-
 scalar DateTime
 
 type User {
