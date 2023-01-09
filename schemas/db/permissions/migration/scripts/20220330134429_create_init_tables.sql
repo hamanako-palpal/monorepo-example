@@ -11,7 +11,8 @@ CREATE TABLE permissions (
 );
 CREATE TABLE role_permissions (
   role_key             VARCHAR(255)           NOT NULL,
-  permission_id        VARCHAR(255)           NOT NULL
+  permission_id        INT                    NOT NULL,
+  FOREIGN KEY (permission_id) references db_permissions.permissions(id) ON DELETE CASCADE
 );
 CREATE TABLE refresh_tokens (
   jti                  VARCHAR(255)           NOT NULL,
