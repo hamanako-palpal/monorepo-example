@@ -14,7 +14,7 @@ message ShopInfo {
 }
 
 message Role {
-  string role_key = 1;
+  string value = 1;
 }
 
 message StaffInfo {
