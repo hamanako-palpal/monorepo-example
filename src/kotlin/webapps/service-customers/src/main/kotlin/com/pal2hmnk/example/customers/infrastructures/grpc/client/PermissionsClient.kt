@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 @Component
 class PermissionsClient : Closeable {
 
-    private val name = "permissions"
+    private val name = "localhost"
 
     private val port = 50053
 

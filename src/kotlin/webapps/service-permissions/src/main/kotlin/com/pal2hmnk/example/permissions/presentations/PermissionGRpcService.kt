@@ -31,8 +31,9 @@ class PermissionGRpcService(
             transformer = { req: GenerateTokenRequest ->
                 SecurityToken(
                     userId = UserId(req.userId.value),
-                    stuffInfo = ShopId(req.staffInfo.shopId.value) to Role(req.staffInfo.role.roleKey),
-                    "gateway",
+                    stuffInfo = req.staffInfo.takeIf { it.hasShopId() }?.shopId?.let { ShopId(it.value) } to
+                            req.staffInfo.takeIf { it.hasRole() }?.let { Role(it.role.roleKey) },
+                    "example",
                 )
             },
             useCase = generateToken::exec,

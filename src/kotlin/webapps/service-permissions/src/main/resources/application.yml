@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://db:5432/db_permissions
+    url: jdbc:postgresql://localhost:5432/db_permissions
     username: app_user
     password: password
     driverClassName: org.postgresql.Driver
@@ -9,8 +9,10 @@ spring:
     port: 6379
     password: null
     database: 0
-server:
+grpc:
   port: 50053
+server:
+  port: 8083
   http2:
     enabled: true
   ssl:

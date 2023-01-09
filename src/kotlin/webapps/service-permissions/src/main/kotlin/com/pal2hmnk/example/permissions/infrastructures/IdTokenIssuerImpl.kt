@@ -17,7 +17,7 @@ class IdTokenIssuerImpl(
     private fun withCustomClaim(token: IdToken): JWTCreator.Builder.() -> Unit = {
         val permissionMap = permissionMapper.findByRoles()
         val (shopId, role) = token.stuffInfo
-        withClaim("shopId", shopId.value)
+        shopId?.let { withClaim("shopId", it.value) }
         withArrayClaim(
             "permissions",
             permissionMap[role]!!.map(Permission::name).toTypedArray()

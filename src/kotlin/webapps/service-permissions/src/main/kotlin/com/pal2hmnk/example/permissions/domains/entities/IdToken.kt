@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 class IdToken(
     override val userId: UserId,
-    val stuffInfo: Pair<ShopId, Role>,
+    val stuffInfo: Pair<ShopId?, Role?>,
     override val clientId: String,
     override val audience: List<String>,
     override val created: LocalDateTime = LocalDateTime.now(),

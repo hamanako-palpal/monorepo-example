@@ -18,17 +18,11 @@ class PermissionMapperImplTest : FunSpec({
             insertInto("permissions") {
                 columns("id", "name")
                 values(1000, "ReadStaffInfo")
-            }
-            insertInto("permissions") {
-                columns("id", "name")
                 values(1001, "AddStaffInfo")
             }
             insertInto("role_permissions") {
                 columns("role_key", "permission_id")
                 values("manager", 1000)
-            }
-            insertInto("role_permissions") {
-                columns("role_key", "permission_id")
                 values("manager", 1001)
             }
         }.launch()
