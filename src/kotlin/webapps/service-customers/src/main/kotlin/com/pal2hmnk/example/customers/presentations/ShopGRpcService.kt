@@ -14,11 +14,13 @@ class ShopGRpcService(
 ) : ShopServiceGrpcKt.ShopServiceCoroutineImplBase() {
 
     private val useCaseRunner = UseCaseRunner(
-        transformer = CustomersAdapter::inputDataOf,
         useCase = scenario::exec,
         converter = CustomersAdapter::translate,
         exceptionHandler = { ShopInfos.getDefaultInstance() }
     )
 
-    override suspend fun findShopInfo(request: ShopIdsRequest): ShopInfos = useCaseRunner.run(request)
+    override suspend fun findShopInfo(request: ShopIdsRequest): ShopInfos =
+        useCaseRunner
+            .initial { CustomersAdapter.inputDataOf(request) }
+            .run()
 }

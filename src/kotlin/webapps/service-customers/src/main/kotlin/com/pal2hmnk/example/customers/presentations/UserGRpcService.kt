@@ -5,6 +5,7 @@ import com.pal2hmnk.example.customers.domains.entities.PasswordRow
 import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.customers.domains.usecases.FindUserByName
 import com.pal2hmnk.example.customers.domains.usecases.SignUp
+import com.pal2hmnk.example.customers.domains.usecases.SignUpModel
 import com.pal2hmnk.example.customers.domains.values.Email
 import com.pal2hmnk.example.generated.grpc.services.SignUpRequest
 import com.pal2hmnk.example.generated.grpc.services.UserInfo
@@ -21,22 +22,25 @@ class UserGRpcService(
 
     override suspend fun findUserInfoByName(request: UserName): UserInfo =
         UseCaseRunner(
-            transformer = UserName::getValue,
             useCase = findUserByName::exec,
             converter = User::asGrpc,
             exceptionHandler = { UserInfo.getDefaultInstance() }
-        ).run(request)
+        )
+            .initial { request.value }
+            .run()
 
     override suspend fun signUp(request: SignUpRequest): UserInfo {
         return UseCaseRunner(
-            transformer = { req: SignUpRequest ->
-                Triple(req.name.value, req.authInfo.email.value, req.authInfo.password)
-            },
-            useCase = { (name, email, pass) ->
-                signUp.exec(name, PasswordRow(pass), Email(email))
-            },
+            useCase = signUp::exec,
             converter = User::asGrpc,
             exceptionHandler = { UserInfo.getDefaultInstance() }
-        ).run(request)
+        )
+            .initial {
+                SignUpModel(
+                    request.name.value,
+                    PasswordRow(request.authInfo.email.value),
+                    Email(request.authInfo.password))
+            }
+            .run()
     }
 }

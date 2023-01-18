@@ -16,9 +16,6 @@ class AuthGRpcService(
 ) : AuthServiceGrpcKt.AuthServiceCoroutineImplBase() {
 
     private val useCaseRunner = UseCaseRunner(
-        transformer = { userAuthInfo: UserAuthInfo ->
-            Email(userAuthInfo.email.value) to PasswordRow(userAuthInfo.password)
-        },
         useCase = scenario::exec,
         converter = {
             TokenResult.newBuilder()
@@ -29,5 +26,7 @@ class AuthGRpcService(
     )
 
     override suspend fun authenticate(request: UserAuthInfo): TokenResult =
-        useCaseRunner.run(request)
+        useCaseRunner
+            .initial { Email(request.email.value) to PasswordRow(request.password) }
+            .run()
 }

@@ -12,7 +12,8 @@ class SignUpImpl(
     private val passwordHashedRepository: PasswordHashedRepository,
     private val userRepository: UserRepository,
 ) : SignUp {
-    override fun exec(name: String, passwordRow: PasswordRow, email: Email) : User? {
+    override fun exec(model: SignUpModel) : User? {
+        val (name: String, passwordRow: PasswordRow, email: Email) = model
         return userRepository.save(
             User(
                 name = name,

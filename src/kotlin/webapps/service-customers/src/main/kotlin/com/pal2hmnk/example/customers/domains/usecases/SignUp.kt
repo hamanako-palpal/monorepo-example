@@ -5,5 +5,7 @@ import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.customers.domains.values.Email
 
 interface SignUp {
-    fun exec(name: String, passwordRow: PasswordRow, email: Email) : User?
+    fun exec(model: SignUpModel) : User?
 }
+
+data class SignUpModel(val name: String, val passwordRow: PasswordRow, val email: Email)

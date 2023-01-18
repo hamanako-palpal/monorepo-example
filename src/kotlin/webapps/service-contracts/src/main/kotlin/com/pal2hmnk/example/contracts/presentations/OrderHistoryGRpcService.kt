@@ -18,7 +18,6 @@ class OrderHistoryGRpcService(
 ) : OrderServiceGrpcKt.OrderServiceCoroutineImplBase() {
 
     private val useCaseRunner = UseCaseRunner(
-        transformer = { it: UserIdentity -> it.userId },
         useCase = scenario::exec,
         converter = ContractsAdapter::translate,
         exceptionHandler = { OrderHistoryList.getDefaultInstance() }
@@ -27,6 +26,8 @@ class OrderHistoryGRpcService(
     @PreAuthorize("hasRole('findOrderHistory')")
     override suspend fun findOrderHistory(request: Empty): OrderHistoryList {
         val idToken = SecurityContextHolder.getContext().authentication as ExampleIdentifiedToken
-        return useCaseRunner.run(idToken.principal as UserIdentity)
+        return useCaseRunner
+            .initial { (idToken.principal as UserIdentity).userId }
+            .run()
     }
 }

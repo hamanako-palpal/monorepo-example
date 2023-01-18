@@ -20,22 +20,15 @@ class PermissionGRpcService(
 ) : PermissionServiceGrpcKt.PermissionServiceCoroutineImplBase() {
     override suspend fun getIdToken(request: Jwt): Jwt =
         UseCaseRunner(
-            transformer = { it : Jwt -> it.value },
             useCase = getIdToken::exec,
             converter = { Jwt.newBuilder().setValue(it).build() },
             exceptionHandler = { Jwt.getDefaultInstance() },
-        ).run(request)
+        )
+            .initial { request.value }
+            .run()
 
     override suspend fun internalGenerateToken(request: GenerateTokenRequest): TokenResult =
         UseCaseRunner(
-            transformer = { req: GenerateTokenRequest ->
-                SecurityToken(
-                    userId = UserId(req.userId.value),
-                    stuffInfo = req.staffInfo.takeIf { it.hasShopId() }?.shopId?.let { ShopId(it.value) } to
-                            req.staffInfo.takeIf { it.hasRole() }?.let { Role(it.role.roleKey) },
-                    "example",
-                )
-            },
             useCase = generateToken::exec,
             converter = {
                 TokenResult.newBuilder()
@@ -45,5 +38,13 @@ class PermissionGRpcService(
                     .build()
             },
             exceptionHandler = { TokenResult.getDefaultInstance() },
-        ).run(request)
+        )
+            .initial {
+                SecurityToken(
+                    userId = UserId(request.userId.value),
+                    stuffInfo = request.staffInfo.takeIf { it.hasShopId() }?.shopId?.let { ShopId(it.value) } to
+                            request.staffInfo.takeIf { it.hasRole() }?.let { Role(it.role.value) },
+                    "example",
+                )
+            }.run()
 }

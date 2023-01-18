@@ -15,7 +15,6 @@ import com.pal2hmnk.example.generated.graphql.types.Shop
 import com.pal2hmnk.example.generated.graphql.types.User
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
 import com.pal2hmnk.example.shared.utils.DateConverter
-import com.pal2hmnk.example.shared.utils.biBypass
 import org.springframework.security.core.context.ReactiveSecurityContextHolder
 import reactor.core.publisher.Mono
 
@@ -28,14 +27,15 @@ class OrderHistoryDataFetcher(
         @InputArgument name: String,
         dataFetchingEnvironment: DgsDataFetchingEnvironment,
     ): Mono<OrderHistory> = ReactiveSecurityContextHolder.getContext().map {
-        val idToken = (it.authentication.principal as GatewayIdentifiedToken).principal as IdToken
         val useCaseRunner = UseCaseRunner(
-                transformer = { inputDataOf(name, idToken.value) },
                 useCase = scenario::exec,
                 converter = ::translate,
                 exceptionHandler = { OrderHistory(User(0, ""), orders = emptyList()) }
             )
-        useCaseRunner.run(name, idToken.value)
+        val idToken = (it.authentication.principal as GatewayIdentifiedToken).principal as IdToken
+        useCaseRunner
+            .initial { inputDataOf(name, idToken.value) }
+            .run()
     }
 
     private fun inputDataOf(name: String, token: String) =

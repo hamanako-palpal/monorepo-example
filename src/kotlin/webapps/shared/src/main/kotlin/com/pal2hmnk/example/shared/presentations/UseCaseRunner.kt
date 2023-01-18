@@ -3,23 +3,24 @@ package com.pal2hmnk.example.shared.presentations
 import com.pal2hmnk.example.shared.exceptions.DomainException
 import com.pal2hmnk.example.shared.utils.compose
 
-class UseCaseRunner<T, U, V, W>(
-    transformer: (T) -> U,
-    useCase: (U) -> V,
-    converter: (V & Any) -> W & Any,
-    exceptionHandler: () -> W & Any,
+class UseCaseRunner<T, U, V>(
+    val useCase: (T) -> U,
+    val converter: (U & Any) -> V & Any,
+    val exceptionHandler: () -> V & Any,
 ) {
-    private val composedRunner = transformer.compose(useCase)
+    private lateinit var composedRunner: () -> U
 
-    val run: (T) -> W & Any = {
+    fun initial(initializer: () -> T): UseCaseRunner<T, U, V> {
+        composedRunner = compose(initializer, useCase)
+        return this
+    }
+
+    fun run(): V & Any =
         try {
-            val executed = composedRunner
-                .invoke(it)
-                ?: throw DomainException()
+            val executed = composedRunner.invoke() ?: throw DomainException()
             converter.invoke(executed)
         } catch (e: Exception) {
             println(e)
             exceptionHandler()
         }
-    }
 }
