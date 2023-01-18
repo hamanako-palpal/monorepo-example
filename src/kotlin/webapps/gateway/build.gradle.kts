@@ -35,5 +35,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter:$graphqlDgsVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$graphqlDgsVersion")
+    implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }

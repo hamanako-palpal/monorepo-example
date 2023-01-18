@@ -57,18 +57,12 @@
     - 発行したAccessTokenとRefreshTokenをcustomersに返す
     - リソースが欲しそうなリクエストはaccessTokenの検証から行う
 
-- レポジトリ構成の革命
-  - applicationsとdomains統合
-  - webapps廃止、libs廃止
 - 認証→ConnectionId生成→リソースへアクセスを通す
 - リソースをもう少し整備しないとね
   - 一旦参照系を整えよう
     - 特定のユーザの注文履歴を照会する
     - 管理者がスタッフ一覧を表示
   - 更新系少しだけ、、、
-- アクセストークンとIDトークンに分けてみたい
-- DBのマイグレーションをEarthfileに移行する
-- データベース生成をEarthlyに移行
 - 気が向いたらdocker-compose廃止
 - protoファイル必要な分だけ生成するようにコピー制御
 - SvelteKitいったろ
