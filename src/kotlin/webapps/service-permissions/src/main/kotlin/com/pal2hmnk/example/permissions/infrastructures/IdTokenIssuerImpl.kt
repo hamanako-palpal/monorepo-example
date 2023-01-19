@@ -5,6 +5,7 @@ import com.pal2hmnk.example.permissions.domains.entities.IdToken
 import com.pal2hmnk.example.permissions.domains.entities.IdTokenIssuer
 import com.pal2hmnk.example.permissions.domains.entities.PermissionMapper
 import com.pal2hmnk.example.permissions.domains.values.Permission
+import com.pal2hmnk.example.permissions.domains.values.Role
 import org.springframework.stereotype.Component
 
 @Component
@@ -20,7 +21,7 @@ class IdTokenIssuerImpl(
         shopId?.let { withClaim("shopId", it.value) }
         withArrayClaim(
             "permissions",
-            permissionMap[role]!!.map(Permission::name).toTypedArray()
+            permissionMap[role ?: Role("guest")]!!.map(Permission::name).toTypedArray()
         )
         withAudience(*token.audience.toTypedArray())
     }
