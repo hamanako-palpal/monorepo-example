@@ -15,8 +15,10 @@ class ContractsGrpcClient(
     port = config.contracts.port,
 ) {
     private val orderStub = OrderServiceGrpcKt.OrderServiceCoroutineStub(channel)
-    suspend fun findBy(id: UserId): OrderHistoryList {
+    suspend fun findBy(id: UserId, token: String): OrderHistoryList {
         val empty = Empty.newBuilder().build()
-        return orderStub.findOrderHistory(empty)
+        return orderStub
+            .withCallCredentials(credentials(token))
+            .findOrderHistory(empty)
     }
 }

@@ -9,6 +9,7 @@ class GatewayIdentifiedToken(
 ) : AbstractAuthenticationToken(listOf(SimpleGrantedAuthority("AUTHENTICATED"))) {
     override fun getCredentials(): Any? = null
     override fun getPrincipal(): Any = idToken
+    override fun isAuthenticated(): Boolean = true
 
     companion object {
         private const val serialVersionUID: Long = 0L

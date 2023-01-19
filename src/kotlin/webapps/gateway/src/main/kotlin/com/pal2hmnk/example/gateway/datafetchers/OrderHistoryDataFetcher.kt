@@ -4,51 +4,45 @@ import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsDataFetchingEnvironment
 import com.netflix.graphql.dgs.DgsQuery
 import com.netflix.graphql.dgs.InputArgument
-import com.pal2hmnk.example.gateway.domains.entities.IdToken
 import com.pal2hmnk.example.gateway.domains.usecaes.FindOrderHistoriesByUserName
 import com.pal2hmnk.example.gateway.domains.usecaes.OrderHistoryInputData
 import com.pal2hmnk.example.gateway.domains.usecaes.OrderHistoryOutputData
-import com.pal2hmnk.example.gateway.securities.GatewayIdentifiedToken
 import com.pal2hmnk.example.generated.graphql.types.Order
 import com.pal2hmnk.example.generated.graphql.types.OrderHistory
 import com.pal2hmnk.example.generated.graphql.types.Shop
 import com.pal2hmnk.example.generated.graphql.types.User
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
 import com.pal2hmnk.example.shared.utils.DateConverter
-import org.springframework.security.core.context.ReactiveSecurityContextHolder
 import reactor.core.publisher.Mono
 
 @DgsComponent
 class OrderHistoryDataFetcher(
     private val scenario: FindOrderHistoriesByUserName,
 ) {
+    private val useCaseRunner = UseCaseRunner(
+        useCase = scenario::exec,
+        converter = ::translate,
+        exceptionHandler = { Mono.just(OrderHistory(User(0, ""), orders = emptyList())) }
+    )
+
     @DgsQuery
     fun orderHistory(
         @InputArgument name: String,
         dataFetchingEnvironment: DgsDataFetchingEnvironment,
-    ): Mono<OrderHistory> = ReactiveSecurityContextHolder.getContext().map {
-        val useCaseRunner = UseCaseRunner(
-                useCase = scenario::exec,
-                converter = ::translate,
-                exceptionHandler = { OrderHistory(User(0, ""), orders = emptyList()) }
+    ): Mono<OrderHistory> = useCaseRunner.initial { inputDataOf(name) }.run()
+
+    private fun inputDataOf(name: String) = OrderHistoryInputData(name)
+
+    private fun translate(output: Mono<OrderHistoryOutputData>): Mono<OrderHistory> =
+        output.map {
+            OrderHistory(
+                user = User(it.orderHistory.user.id.value, it.orderHistory.user.name),
+                orders = it.orderHistory.orders.map { order ->
+                    Order(
+                        shop = Shop(order.shop.id.value, order.shop.name),
+                        ordered = DateConverter.localDateTimeToStr(order.ordered)
+                    )
+                }
             )
-        val idToken = (it.authentication.principal as GatewayIdentifiedToken).principal as IdToken
-        useCaseRunner
-            .initial { inputDataOf(name, idToken.value) }
-            .run()
-    }
-
-    private fun inputDataOf(name: String, token: String) =
-        OrderHistoryInputData(name, token)
-
-    private fun translate(output: OrderHistoryOutputData): OrderHistory =
-        OrderHistory(
-            user = User(output.orderHistory.user.id.value, output.orderHistory.user.name),
-            orders = output.orderHistory.orders.map {
-                Order(
-                    shop = Shop(it.shop.id.value, it.shop.name),
-                    ordered = DateConverter.localDateTimeToStr(it.ordered)
-                )
-            }
-        )
+        }
 }

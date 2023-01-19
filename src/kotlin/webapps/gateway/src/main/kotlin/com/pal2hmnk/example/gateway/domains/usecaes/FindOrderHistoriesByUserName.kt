@@ -1,14 +1,14 @@
 package com.pal2hmnk.example.gateway.domains.usecaes
 
 import com.pal2hmnk.example.gateway.domains.querymodels.OrderHistory
+import reactor.core.publisher.Mono
 
 interface FindOrderHistoriesByUserName {
-    fun exec(input: OrderHistoryInputData): OrderHistoryOutputData
+    fun exec(input: OrderHistoryInputData): Mono<OrderHistoryOutputData>
 }
 
-class OrderHistoryInputData(
-    name: String,
-    token: String,
+data class OrderHistoryInputData(
+    val name: String,
 )
 
 class OrderHistoryOutputData(
