@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component
 class CustomersGrpcClient(
     config: GrpcClientConfiguration,
 ) : AbstractGrpcClient(
-    name = config.contracts.addr,
-    port = config.contracts.port,
+    name = config.customers.addr,
+    port = config.customers.port,
 ) {
     private val userStub = UserServiceGrpcKt.UserServiceCoroutineStub(channel)
     private val shopStub = ShopServiceGrpcKt.ShopServiceCoroutineStub(channel)
@@ -33,18 +33,28 @@ class CustomersGrpcClient(
             )
             setName(UserName.newBuilder().setValue(userName))
         }.build()
-        return userStub.signUp(request).let { User(UserId(it.id), it.name) }
+        val response = userStub
+            .signUp(request)
+        return response.let { User(UserId(it.id), it.name) }
     }
 
-    suspend fun findUserInfo(name: String): User {
+    suspend fun findUserInfo(
+        name: String,
+    ): User {
         val request = UserName.newBuilder().setValue(name).build()
-        return userStub.findUserInfoByName(request).let { User(UserId(it.id), it.name) }
+        val response = userStub
+//            .withCallCredentials(credentials(token))
+            .findUserInfoByName(request)
+        return response.let { User(UserId(it.id), it.name) }
     }
 
-    suspend fun findShopsByShopIds(shopIds: Set<ShopId>): List<Shop> {
+    suspend fun findShopsByShopIds(shopIds: Set<ShopId>, token: String): List<Shop> {
         val request = ShopsAdapter.transform(shopIds)
-        return shopStub.findShopInfo(request).shopsList.map {
-            Shop(ShopId(it.id.value), it.name)
-        }
+        return shopStub
+            .withCallCredentials(credentials(token))
+            .findShopInfo(request)
+            .shopsList.map {
+                Shop(ShopId(it.id.value), it.name)
+            }
     }
 }
