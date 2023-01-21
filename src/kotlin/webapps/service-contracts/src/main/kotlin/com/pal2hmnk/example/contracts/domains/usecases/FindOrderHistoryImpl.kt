@@ -9,6 +9,7 @@ class FindOrderHistoryImpl(
     private val repo: OrderRepository,
 ) : FindOrderHistory {
     override fun exec(userId: UserId): OrderHistoryOutputData {
-        return OrderHistoryOutputData(repo.findOrderHistoryBy(userId))
+        val orderHistory = repo.findOrderHistoryBy(userId)
+        return OrderHistoryOutputData(userId, orderHistory)
     }
 }

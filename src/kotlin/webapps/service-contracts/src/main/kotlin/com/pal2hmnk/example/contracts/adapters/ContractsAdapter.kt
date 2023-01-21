@@ -13,13 +13,16 @@ object ContractsAdapter {
 
     fun translate(outputData: OrderHistoryOutputData): OrderHistoryList =
         OrderHistoryList.newBuilder().also {
-            it.setUserId(UserId.newBuilder().setValue(outputData.orderHistory.first().userId()))
-            outputData.orderHistory.forEachIndexed { idx, history ->
-                val grpcOrderHistory = OrderHistory.newBuilder().apply {
-                    shopId = ShopId.newBuilder().setValue(history.shopId()).build()
-                    ordered = DateConverter.localDateTimeToStr(history.ordered)
-                }.build()
-                it.setOrderHistory(idx, grpcOrderHistory)
+            it.setUserId(UserId.newBuilder().setValue(outputData.userId.value))
+            when (outputData.orderHistory.size) {
+                0 -> it.setOrderHistory(1, OrderHistory.getDefaultInstance())
+                else -> outputData.orderHistory.forEachIndexed { idx, history ->
+                    val grpcOrderHistory = OrderHistory.newBuilder().apply {
+                        shopId = ShopId.newBuilder().setValue(history.shopId()).build()
+                        ordered = DateConverter.localDateTimeToStr(history.ordered)
+                    }.build()
+                    it.setOrderHistory(idx, grpcOrderHistory)
+                }
             }
         }.build()
 }

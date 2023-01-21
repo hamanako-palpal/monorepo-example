@@ -8,5 +8,6 @@ interface FindOrderHistory {
 }
 
 class OrderHistoryOutputData(
+    val userId: UserId,
     val orderHistory: List<Order>,
 )

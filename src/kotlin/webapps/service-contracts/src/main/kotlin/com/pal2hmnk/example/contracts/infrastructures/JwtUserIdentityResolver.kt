@@ -17,13 +17,14 @@ class JwtUserIdentityResolver : UserIdentityResolver {
         .withIssuer("permissions")
         .build()
 
-    override fun resolve(token: String): UserIdentity =
-        verifier.verify(token).let {
-            UserIdentity(
-                UserId(it.subject.toInt()),
-                ShopId(it.claims["shopId"]!!.asInt()!!),
-                it.claims["permission"]!!.asArray(String::class.java).map(::Permission),
-                true,
-            )
-        }
+    override fun resolve(token: String): UserIdentity {
+        val verified = verifier.verify(token)
+        return UserIdentity(
+            UserId(verified.subject.toInt()),
+            verified.claims["shopId"]?.let { ShopId(it.asInt()!!) },
+            verified.claims["permissions"]!!.asArray(String::class.java).map(::Permission),
+            true,
+        )
+    }
+
 }
