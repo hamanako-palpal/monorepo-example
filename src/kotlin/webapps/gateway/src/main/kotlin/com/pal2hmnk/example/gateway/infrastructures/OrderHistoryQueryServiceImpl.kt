@@ -23,13 +23,16 @@ class OrderHistoryQueryServiceImpl(
         ReactiveSecurityContextHolder.getContext().map { context ->
             val idToken = (context.authentication as GatewayIdentifiedToken).principal as IdToken
 
-            val (user, orderHistoryMap, shopList) = runBlocking {
+            val (user, orderHistoryMap) = runBlocking {
                 val user = customersGrpcClient.findUserInfo(name)// , idToken.value
                 val orderHistoryMap = contractsGrpcClient.findBy(user.id, idToken.value)
                     .orderHistoryList
                     .associateBy { ShopId(it.shopId.value) }
-                val shopList = customersGrpcClient.findShopsByShopIds(orderHistoryMap.keys, idToken.value)
-                Triple(user, orderHistoryMap, shopList)
+
+                Pair(user, orderHistoryMap)
+            }
+            val shopList = runBlocking {
+                customersGrpcClient.findShopsByShopIds(orderHistoryMap.keys, idToken.value)
             }
 
             OrderHistory(
