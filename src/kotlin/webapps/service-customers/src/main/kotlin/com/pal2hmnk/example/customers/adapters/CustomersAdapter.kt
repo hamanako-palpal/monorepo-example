@@ -29,7 +29,7 @@ fun com.pal2hmnk.example.customers.domains.values.ShopId.asGRpc(): ShopId =
 fun com.pal2hmnk.example.customers.domains.entities.User.asGrpc(): UserInfo =
     UserInfo.newBuilder()
         .setId(this.userId!!.value)
-        .setName(this.email.value)
+        .setName(this.name)
         .build()
 
 fun Shop.asGRpc(): ShopInfo =
