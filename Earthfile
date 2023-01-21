@@ -96,10 +96,7 @@ middlewares-run:
   LOCALLY
   WITH DOCKER \
       --load db-base:latest=+db-base \
-      --load redis-base:latest=+redis-base \
-      --load migrate-customers:latest=+migrate-customers \
-      --load migrate-contracts:latest=+migrate-contracts \
-      --load migrate-permissions:latest=+migrate-permissions
+      --load redis-base:latest=+redis-base
     RUN docker network inspect example-network >/dev/null 2>&1 || \
       docker network create example-network && \
       docker volume create example-db && \
@@ -108,10 +105,7 @@ middlewares-run:
         -v example-db:/var/lib/postgresql/data \
         --rm db-base:latest && \
       docker run -d --net=example-network --net-alias=redis \
-        --name example-redis -p 6379:6379 --rm redis-base:latest \
-      docker run --net=example-network --rm migrate-customers:latest up && \
-      docker run --net=example-network --rm migrate-contracts:latest up && \
-      docker run --net=example-network --rm migrate-permissions:latest up
+        --name example-redis -p 6379:6379 --rm redis-base:latest
   END
 
 migrate-base:
