@@ -6,7 +6,7 @@ import com.pal2hmnk.example.contracts.domains.values.UserId
 
 class UserIdentity(
     val userId: UserId,
-    val shopId: ShopId,
+    val shopId: ShopId?,
     val permissions: List<Permission>,
     val isValid: Boolean,
 ) {

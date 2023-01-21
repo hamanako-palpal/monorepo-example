@@ -9,8 +9,8 @@ import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.generated.grpc.services.OrderServiceGrpcKt
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
 import org.lognet.springboot.grpc.GRpcService
+import org.lognet.springboot.grpc.security.GrpcSecurity
 import org.springframework.security.access.prepost.PreAuthorize
-import org.springframework.security.core.context.SecurityContextHolder
 
 @GRpcService
 class OrderHistoryGRpcService(
@@ -25,9 +25,10 @@ class OrderHistoryGRpcService(
 
     @PreAuthorize("hasRole('findOrderHistory')")
     override suspend fun findOrderHistory(request: Empty): OrderHistoryList {
-        val idToken = SecurityContextHolder.getContext().authentication as ExampleIdentifiedToken
+        val auth = GrpcSecurity.AUTHENTICATION_CONTEXT_KEY.get() as ExampleIdentifiedToken
+        val userIdentity = auth.principal as UserIdentity
         return useCaseRunner
-            .initial { (idToken.principal as UserIdentity).userId }
+            .initial { userIdentity.userId }
             .run()
     }
 }

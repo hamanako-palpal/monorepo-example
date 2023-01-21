@@ -11,6 +11,7 @@ class ExampleIdentifiedToken(
 ) {
     override fun getCredentials(): Any? = null
     override fun getPrincipal(): Any = userIdentity
+    override fun isAuthenticated(): Boolean = true
 
     companion object {
         private const val serialVersionUID: Long = 0L

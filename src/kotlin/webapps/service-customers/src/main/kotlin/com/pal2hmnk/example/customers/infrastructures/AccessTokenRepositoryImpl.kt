@@ -19,7 +19,7 @@ class AccessTokenRepositoryImpl(
             setStaffInfo(
                 StaffInfo.newBuilder().apply {
                     stuff.shopId?.let { this.shopId = it.asGRpc() }
-                    stuff.role?.let { this.setRole(Role.newBuilder().setValue(it)) }
+                    this.setRole(Role.newBuilder().setValue(stuff.role ?: "guest"))
                 }
             )
         }

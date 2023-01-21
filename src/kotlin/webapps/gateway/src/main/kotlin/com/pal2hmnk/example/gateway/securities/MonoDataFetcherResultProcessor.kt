@@ -15,11 +15,11 @@ class MonoDataFetcherResultProcessor : DataFetcherResultProcessor {
 
     override fun process(originalResult: Any, dfe: DgsDataFetchingEnvironment): Any {
         if (originalResult is Mono<*>) {
-            val context = ReactiveSecurityContextHolder
-                .withAuthentication(
-                    (dfe.getDgsContext().customContext as SecurityContext).authentication
-                )
-            return originalResult.contextWrite(context).toFuture()
+            val token = (dfe.getDgsContext().customContext as? SecurityContext)?.authentication
+            return token?.let {
+                val context = ReactiveSecurityContextHolder.withAuthentication(it)
+                return originalResult.contextWrite(context).toFuture()
+            } ?: originalResult
         } else {
             throw IllegalArgumentException("Instance passed to ${this::class.qualifiedName} was not a Mono<*>. It was a ${originalResult::class.qualifiedName} instead")
         }

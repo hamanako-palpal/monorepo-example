@@ -1,5 +1,6 @@
 plugins {
     kotlin("plugin.spring") version "1.7.21"
+    id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.springframework.boot") version "2.7.6"
 }
 dependencies {
@@ -19,9 +20,10 @@ dependencies {
     testImplementation(project(":webapps:shared-test"))
 
     implementation("com.auth0:java-jwt:$jwtVersion")
-    implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")

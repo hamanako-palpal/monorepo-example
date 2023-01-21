@@ -26,7 +26,7 @@ abstract class AbstractGrpcClient(
                 try {
                     val headers = io.grpc.Metadata()
                     headers.put(
-                        io.grpc.Metadata.Key.of("authorization", io.grpc.Metadata.ASCII_STRING_MARSHALLER),
+                        io.grpc.Metadata.Key.of("Authorization", io.grpc.Metadata.ASCII_STRING_MARSHALLER),
                         "Bearer $token"
                     )
                     applier.apply(headers)
