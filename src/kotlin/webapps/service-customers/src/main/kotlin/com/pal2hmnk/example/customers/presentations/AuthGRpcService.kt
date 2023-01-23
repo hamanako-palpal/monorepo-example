@@ -27,6 +27,6 @@ class AuthGRpcService(
 
     override suspend fun authenticate(request: UserAuthInfo): TokenResult =
         useCaseRunner
-            .initial { Email(request.email.value) to PasswordRow(request.password) }
+            .initial { Email(request.email) to PasswordRow(request.password) }
             .run()
 }

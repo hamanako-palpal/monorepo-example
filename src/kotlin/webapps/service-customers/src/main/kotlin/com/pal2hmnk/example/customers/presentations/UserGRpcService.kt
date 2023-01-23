@@ -38,8 +38,8 @@ class UserGRpcService(
             .initial {
                 SignUpModel(
                     request.name.value,
-                    PasswordRow(request.authInfo.email.value),
-                    Email(request.authInfo.password))
+                    PasswordRow(request.authInfo.password),
+                    Email(request.authInfo.email))
             }
             .run()
     }

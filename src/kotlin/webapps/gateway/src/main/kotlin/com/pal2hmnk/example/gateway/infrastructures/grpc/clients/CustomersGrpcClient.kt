@@ -6,7 +6,6 @@ import com.pal2hmnk.example.gateway.domains.entities.Shop
 import com.pal2hmnk.example.gateway.domains.entities.User
 import com.pal2hmnk.example.gateway.domains.values.ShopId
 import com.pal2hmnk.example.gateway.domains.values.UserId
-import com.pal2hmnk.example.generated.grpc.services.Email
 import com.pal2hmnk.example.generated.grpc.services.ShopServiceGrpcKt
 import com.pal2hmnk.example.generated.grpc.services.SignUpRequest
 import com.pal2hmnk.example.generated.grpc.services.UserAuthInfo
@@ -28,7 +27,7 @@ class CustomersGrpcClient(
         val request = SignUpRequest.newBuilder().apply {
             setAuthInfo(
                 UserAuthInfo.newBuilder()
-                    .setEmail(Email.newBuilder().setValue(email))
+                    .setEmail(email)
                     .setPassword(password)
             )
             setName(UserName.newBuilder().setValue(userName))
