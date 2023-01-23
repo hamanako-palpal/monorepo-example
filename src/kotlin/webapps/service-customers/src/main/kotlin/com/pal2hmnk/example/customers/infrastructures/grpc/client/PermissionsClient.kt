@@ -23,9 +23,9 @@ class PermissionsClient : Closeable {
 
     private val stub = PermissionServiceGrpcKt.PermissionServiceCoroutineStub(channel)
 
-    suspend fun issue(request: GenerateTokenRequest.Builder.() -> Unit): TokenResult {
+    suspend fun issue(cmd: GenerateTokenRequest.Builder.() -> Unit): TokenResult {
         return stub.internalGenerateToken(
-            GenerateTokenRequest.newBuilder().apply(request).build()
+            GenerateTokenRequest.newBuilder().apply(cmd).build()
         )
     }
 

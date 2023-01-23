@@ -6,7 +6,7 @@ import com.pal2hmnk.example.generated.grpc.services.OrderHistoryList
 import com.pal2hmnk.example.shared.utils.DateConverter
 
 object ContractsAdapter {
-    fun translate(outputData: OrderHistoryOutputData): OrderHistoryList =
+    fun orderHistoriesAsGRpc(outputData: OrderHistoryOutputData): OrderHistoryList =
         OrderHistoryList.newBuilder().also {
             it.userId = outputData.userId.value
             when (outputData.orderHistory.size) {

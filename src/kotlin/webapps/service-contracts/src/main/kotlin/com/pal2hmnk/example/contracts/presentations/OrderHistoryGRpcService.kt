@@ -19,7 +19,7 @@ class OrderHistoryGRpcService(
 
     private val useCaseRunner = UseCaseRunner(
         useCase = scenario::exec,
-        converter = ContractsAdapter::translate,
+        converter = ContractsAdapter::orderHistoriesAsGRpc,
         exceptionHandler = { OrderHistoryList.getDefaultInstance() }
     )
 

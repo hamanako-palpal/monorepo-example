@@ -21,7 +21,7 @@ class OrderHistoryDataFetcher(
 ) {
     private val useCaseRunner = UseCaseRunner(
         useCase = scenario::exec,
-        converter = ::translate,
+        converter = ::asGql,
         exceptionHandler = { Mono.just(OrderHistory(User(0, ""), orders = emptyList())) }
     )
 
@@ -33,7 +33,7 @@ class OrderHistoryDataFetcher(
 
     private fun inputDataOf(name: String) = OrderHistoryInputData(name)
 
-    private fun translate(output: Mono<OrderHistoryOutputData>): Mono<OrderHistory> =
+    private fun asGql(output: Mono<OrderHistoryOutputData>): Mono<OrderHistory> =
         output.map {
             OrderHistory(
                 user = User(it.orderHistory.user.id.value, it.orderHistory.user.name),

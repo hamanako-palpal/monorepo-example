@@ -13,11 +13,12 @@ object CustomersAdapter {
     fun inputDataOf(request: ShopIdsRequest): List<ShopIdDomain> =
         request.idsList.map { ShopIdDomain(it) }
 
-    fun translate(shopList: List<Shop>): ShopInfos = ShopInfos.newBuilder().also {
-        shopList.forEachIndexed { idx, shop ->
-            it.setShops(idx, shop.asGRpc())
-        }
-    }.build()
+    fun shopInfosAsGRpc(shopList: List<Shop>): ShopInfos =
+        ShopInfos.newBuilder().also {
+            shopList.forEachIndexed { idx, shop ->
+                it.setShops(idx, shop.asGRpc())
+            }
+        }.build()
 }
 
 fun com.pal2hmnk.example.customers.domains.entities.User.asGRpc(): UserInfo =

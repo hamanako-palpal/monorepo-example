@@ -39,7 +39,7 @@ class CustomersGrpcClient(
     }
 
     suspend fun findShopsByShopIds(shopIds: Set<ShopId>, token: String): List<Shop> {
-        val request = ShopsAdapter.transform(shopIds)
+        val request = ShopsAdapter.shopIdsAsGRpc(shopIds)
         return shopStub
             .withCallCredentials(authorization(token))
             .findShopInfo(request)

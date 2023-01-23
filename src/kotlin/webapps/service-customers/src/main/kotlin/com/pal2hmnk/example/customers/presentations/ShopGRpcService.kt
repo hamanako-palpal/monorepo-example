@@ -15,7 +15,7 @@ class ShopGRpcService(
 
     private val useCaseRunner = UseCaseRunner(
         useCase = scenario::exec,
-        converter = CustomersAdapter::translate,
+        converter = CustomersAdapter::shopInfosAsGRpc,
         exceptionHandler = { ShopInfos.getDefaultInstance() }
     )
 
