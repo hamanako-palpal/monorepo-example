@@ -42,7 +42,7 @@ class PermissionGRpcService(
             .initial {
                 SecurityToken(
                     userId = UserId(request.userId.value),
-                    stuffInfo = request.staffInfo.takeIf { it.hasShopId() }?.shopId?.let { ShopId(it.value) } to
+                    stuffInfo = request.staffInfo?.let { ShopId(it.shopId) } to
                             request.staffInfo.takeIf { it.hasRole() }?.let { Role(it.role.value) },
                     "example",
                 )

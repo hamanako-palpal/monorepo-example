@@ -27,7 +27,7 @@ class OrderHistoryQueryServiceImpl(
                 val user = customersGrpcClient.findUserInfo(name)// , idToken.value
                 val orderHistoryMap = contractsGrpcClient.findBy(user.id, idToken.value)
                     .orderHistoryList
-                    .associateBy { ShopId(it.shopId.value) }
+                    .associateBy { ShopId(it.shopId) }
 
                 Pair(user, orderHistoryMap)
             }

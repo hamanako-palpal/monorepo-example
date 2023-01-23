@@ -11,7 +11,7 @@ service ShopService {
 }
 
 message ShopIdsRequest {
-  repeated ShopId ids = 1;
+  repeated int32 ids = 1;
 }
 
 message ShopInfos {

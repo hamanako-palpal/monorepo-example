@@ -54,7 +54,7 @@ class CustomersGrpcClient(
             .withCallCredentials(credentials(token))
             .findShopInfo(request)
             .shopsList.map {
-                Shop(ShopId(it.id.value), it.name)
+                Shop(ShopId(it.id), it.name)
             }
     }
 }

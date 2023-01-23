@@ -17,6 +17,6 @@ message OrderHistoryList {
 }
 
 message OrderHistory {
-  ShopId shopId = 1;
+  int32 shopId = 1;
   string ordered = 2;
 }
