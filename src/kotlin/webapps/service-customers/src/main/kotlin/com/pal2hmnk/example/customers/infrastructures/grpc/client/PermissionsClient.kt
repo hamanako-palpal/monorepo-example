@@ -3,8 +3,8 @@ package com.pal2hmnk.example.customers.infrastructures.grpc.client
 import com.pal2hmnk.example.generated.grpc.services.GenerateTokenRequest
 import com.pal2hmnk.example.generated.grpc.services.Jwt
 import com.pal2hmnk.example.generated.grpc.services.PermissionServiceGrpcKt
+import com.pal2hmnk.example.generated.grpc.services.TokenResult
 import io.grpc.ManagedChannelBuilder
-import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Component
 import java.io.Closeable
 import java.util.concurrent.TimeUnit
@@ -23,9 +23,10 @@ class PermissionsClient : Closeable {
 
     private val stub = PermissionServiceGrpcKt.PermissionServiceCoroutineStub(channel)
 
-    fun issue(request: GenerateTokenRequest.Builder.() -> Unit) = runBlocking {
-        val built = GenerateTokenRequest.newBuilder().apply(request).build()
-        stub.internalGenerateToken(built)
+    suspend fun issue(request: GenerateTokenRequest.Builder.() -> Unit): TokenResult {
+        return stub.internalGenerateToken(
+            GenerateTokenRequest.newBuilder().apply(request).build()
+        )
     }
 
     suspend fun findIdentity(token: String): String {

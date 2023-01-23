@@ -3,26 +3,21 @@ package com.pal2hmnk.example.customers.infrastructures
 import com.pal2hmnk.example.customers.adapters.asGRpc
 import com.pal2hmnk.example.customers.domains.entities.AccessToken
 import com.pal2hmnk.example.customers.domains.entities.AccessTokenRepository
-import com.pal2hmnk.example.customers.domains.entities.Stuff
+import com.pal2hmnk.example.customers.domains.entities.Staff
 import com.pal2hmnk.example.customers.infrastructures.grpc.client.PermissionsClient
-import com.pal2hmnk.example.generated.grpc.services.Role
-import com.pal2hmnk.example.generated.grpc.services.StaffInfo
+import kotlinx.coroutines.runBlocking
 import org.springframework.stereotype.Repository
 
 @Repository
 class AccessTokenRepositoryImpl(
     private val permissionsClient: PermissionsClient
 ) : AccessTokenRepository {
-    override fun save(stuff: Stuff): AccessToken {
-        return permissionsClient.issue {
-            userId = stuff.userId.asGRpc()
-            setStaffInfo(
-                StaffInfo.newBuilder().apply {
-                    stuff.shopId?.let { this.shopId = it.asGRpc() }
-                    this.setRole(Role.newBuilder().setValue(stuff.role ?: "guest"))
-                }
-            )
-        }
-            .let { AccessToken(it.accessToken.value) }
+    override fun save(staff: Staff): AccessToken {
+        return runBlocking {
+            permissionsClient.issue {
+                userId = staff.userId.asGRpc()
+                staffInfo = staff.asGRpc()
+            }
+        }.let { AccessToken(it.accessToken.value) }
     }
 }

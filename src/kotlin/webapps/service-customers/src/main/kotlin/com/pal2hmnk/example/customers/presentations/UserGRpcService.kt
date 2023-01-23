@@ -1,6 +1,6 @@
 package com.pal2hmnk.example.customers.presentations
 
-import com.pal2hmnk.example.customers.adapters.asGrpc
+import com.pal2hmnk.example.customers.adapters.asGRpc
 import com.pal2hmnk.example.customers.domains.entities.PasswordRow
 import com.pal2hmnk.example.customers.domains.entities.User
 import com.pal2hmnk.example.customers.domains.usecases.FindUserByName
@@ -23,7 +23,7 @@ class UserGRpcService(
     override suspend fun findUserInfoByName(request: UserName): UserInfo =
         UseCaseRunner(
             useCase = findUserByName::exec,
-            converter = User::asGrpc,
+            converter = User::asGRpc,
             exceptionHandler = { UserInfo.getDefaultInstance() }
         )
             .initial { request.value }
@@ -32,7 +32,7 @@ class UserGRpcService(
     override suspend fun signUp(request: SignUpRequest): UserInfo {
         return UseCaseRunner(
             useCase = signUp::exec,
-            converter = User::asGrpc,
+            converter = User::asGRpc,
             exceptionHandler = { UserInfo.getDefaultInstance() }
         )
             .initial {

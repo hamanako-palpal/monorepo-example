@@ -1,10 +1,13 @@
 package com.pal2hmnk.example.customers.adapters
 
 import com.pal2hmnk.example.customers.domains.entities.Shop
+import com.pal2hmnk.example.customers.domains.entities.Staff
+import com.pal2hmnk.example.generated.grpc.services.Role
 import com.pal2hmnk.example.generated.grpc.services.ShopId
 import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 import com.pal2hmnk.example.generated.grpc.services.ShopInfo
 import com.pal2hmnk.example.generated.grpc.services.ShopInfos
+import com.pal2hmnk.example.generated.grpc.services.StaffInfo
 import com.pal2hmnk.example.generated.grpc.services.UserId
 import com.pal2hmnk.example.generated.grpc.services.UserInfo
 import com.pal2hmnk.example.customers.domains.values.ShopId as ShopIdDomain
@@ -26,7 +29,7 @@ fun com.pal2hmnk.example.customers.domains.values.UserId.asGRpc(): UserId =
 fun com.pal2hmnk.example.customers.domains.values.ShopId.asGRpc(): ShopId =
     ShopId.newBuilder().setValue(this.value).build()
 
-fun com.pal2hmnk.example.customers.domains.entities.User.asGrpc(): UserInfo =
+fun com.pal2hmnk.example.customers.domains.entities.User.asGRpc(): UserInfo =
     UserInfo.newBuilder()
         .setId(this.userId!!.value)
         .setName(this.name)
@@ -36,4 +39,11 @@ fun Shop.asGRpc(): ShopInfo =
     ShopInfo.newBuilder()
         .setId(id.asGRpc())
         .setName(shopName.value)
+        .build()
+
+fun Staff.asGRpc(): StaffInfo =
+    StaffInfo.newBuilder().also {
+        this.shopId?.let { shop -> it.shopId = shop.asGRpc() }
+        it.setRole(Role.newBuilder().setValue(this.getRole()))
+    }
         .build()
