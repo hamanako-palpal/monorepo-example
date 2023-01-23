@@ -16,7 +16,7 @@ abstract class AbstractGrpcClient(
         .usePlaintext()
         .build()
 
-    fun credentials(token: String) = object : CallCredentials() {
+    fun authorization(token: String) = object : CallCredentials() {
         override fun applyRequestMetadata(
             requestInfo: RequestInfo?,
             appExecutor: Executor,

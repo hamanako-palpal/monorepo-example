@@ -18,7 +18,7 @@ class ContractsGrpcClient(
     suspend fun findBy(id: UserId, token: String): OrderHistoryList {
         val empty = Empty.newBuilder().build()
         return orderStub
-            .withCallCredentials(credentials(token))
+            .withCallCredentials(authorization(token))
             .findOrderHistory(empty)
     }
 }
