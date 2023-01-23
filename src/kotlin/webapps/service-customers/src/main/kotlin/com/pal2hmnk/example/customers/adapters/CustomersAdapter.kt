@@ -2,7 +2,6 @@ package com.pal2hmnk.example.customers.adapters
 
 import com.pal2hmnk.example.customers.domains.entities.Shop
 import com.pal2hmnk.example.customers.domains.entities.Staff
-import com.pal2hmnk.example.generated.grpc.services.Role
 import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 import com.pal2hmnk.example.generated.grpc.services.ShopInfo
 import com.pal2hmnk.example.generated.grpc.services.ShopInfos
@@ -36,6 +35,6 @@ fun Shop.asGRpc(): ShopInfo =
 fun Staff.asGRpc(): StaffInfo =
     StaffInfo.newBuilder().also {
         this.shopId?.let { shop -> it.shopId = shop.value }
-        it.setRole(Role.newBuilder().setValue(this.getRole()))
     }
+        .setRole(this.getRole())
         .build()

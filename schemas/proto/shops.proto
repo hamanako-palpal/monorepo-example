@@ -9,11 +9,7 @@ message ShopInfo {
   string name = 2;
 }
 
-message Role {
-  string value = 1;
-}
-
 message StaffInfo {
   int32 shopId = 1;
-  Role role = 2;
+  string role = 2;
 }
