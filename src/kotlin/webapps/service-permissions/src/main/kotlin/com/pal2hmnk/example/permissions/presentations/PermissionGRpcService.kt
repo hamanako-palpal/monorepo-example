@@ -33,8 +33,8 @@ class PermissionGRpcService(
             converter = {
                 TokenResult.newBuilder()
                     .setRes(TokenResult.Result.CREARTED)
-                    .setAccessToken(Jwt.newBuilder().setValue(it.accessToken))
-                    .setRefreshToken(Jwt.newBuilder().setValue(it.refreshToken))
+                    .setAccessToken(it.accessToken)
+                    .setRefreshToken(it.refreshToken)
                     .build()
             },
             exceptionHandler = { TokenResult.getDefaultInstance() },

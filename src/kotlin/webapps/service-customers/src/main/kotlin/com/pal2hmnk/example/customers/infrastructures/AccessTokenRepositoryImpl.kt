@@ -18,6 +18,6 @@ class AccessTokenRepositoryImpl(
                 userId = staff.userId.value
                 staffInfo = staff.asGRpc()
             }
-        }.let { AccessToken(it.accessToken.value) }
+        }.let { AccessToken(it.accessToken) }
     }
 }

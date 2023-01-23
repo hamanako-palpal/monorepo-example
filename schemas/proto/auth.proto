@@ -10,8 +10,8 @@ message Jwt {
 
 message TokenResult {
   Result res = 1;
-  Jwt accessToken = 2;
-  Jwt refreshToken = 3;
+  string accessToken = 2;
+  string refreshToken = 3;
   enum Result {
     CREARTED = 0;
   }

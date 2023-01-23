@@ -4,7 +4,6 @@ import com.pal2hmnk.example.customers.domains.usecases.Authenticate
 import com.pal2hmnk.example.customers.domains.values.Email
 import com.pal2hmnk.example.customers.domains.entities.PasswordRow
 import com.pal2hmnk.example.generated.grpc.services.AuthServiceGrpcKt
-import com.pal2hmnk.example.generated.grpc.services.Jwt
 import com.pal2hmnk.example.generated.grpc.services.TokenResult
 import com.pal2hmnk.example.generated.grpc.services.UserAuthInfo
 import com.pal2hmnk.example.shared.presentations.UseCaseRunner
@@ -19,7 +18,7 @@ class AuthGRpcService(
         useCase = scenario::exec,
         converter = {
             TokenResult.newBuilder()
-                .setAccessToken(Jwt.newBuilder().setValue(it.value))
+                .setAccessToken(it.value)
                 .build()
         },
         exceptionHandler = { TokenResult.getDefaultInstance() }
