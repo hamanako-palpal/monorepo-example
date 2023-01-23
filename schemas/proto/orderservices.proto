@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package com.pal2hmnk.example.generated.grpc.services;
 
-import "services/users.proto";
 import "services/orders.proto";
 import "google/protobuf/empty.proto";
 
