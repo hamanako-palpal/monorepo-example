@@ -15,7 +15,7 @@ class AccessTokenRepositoryImpl(
     override fun save(staff: Staff): AccessToken {
         return runBlocking {
             permissionsClient.issue {
-                userId = staff.userId.asGRpc()
+                userId = staff.userId.value
                 staffInfo = staff.asGRpc()
             }
         }.let { AccessToken(it.accessToken.value) }

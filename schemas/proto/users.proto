@@ -4,10 +4,6 @@ package com.pal2hmnk.example.generated.grpc.services;
 
 option java_multiple_files = true;
 
-message UserId {
-  int32 value = 1;
-}
-
 message UserName {
   string value = 1;
 }

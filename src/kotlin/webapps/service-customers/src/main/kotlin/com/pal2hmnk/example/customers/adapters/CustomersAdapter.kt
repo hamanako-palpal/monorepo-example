@@ -7,7 +7,6 @@ import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 import com.pal2hmnk.example.generated.grpc.services.ShopInfo
 import com.pal2hmnk.example.generated.grpc.services.ShopInfos
 import com.pal2hmnk.example.generated.grpc.services.StaffInfo
-import com.pal2hmnk.example.generated.grpc.services.UserId
 import com.pal2hmnk.example.generated.grpc.services.UserInfo
 import com.pal2hmnk.example.customers.domains.values.ShopId as ShopIdDomain
 
@@ -21,9 +20,6 @@ object CustomersAdapter {
         }
     }.build()
 }
-
-fun com.pal2hmnk.example.customers.domains.values.UserId.asGRpc(): UserId =
-    UserId.newBuilder().setValue(this.value).build()
 
 fun com.pal2hmnk.example.customers.domains.entities.User.asGRpc(): UserInfo =
     UserInfo.newBuilder()
