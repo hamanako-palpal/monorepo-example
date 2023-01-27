@@ -18,7 +18,9 @@ class AuthGRpcService(
         useCase = scenario::exec,
         converter = {
             TokenResult.newBuilder()
-                .setAccessToken(it.value)
+                .setRes(TokenResult.Result.CREARTED)
+                .setAccessToken(it.accessToken.value)
+                .setRefreshToken(it.refreshToken.value)
                 .build()
         },
         exceptionHandler = { TokenResult.getDefaultInstance() }
