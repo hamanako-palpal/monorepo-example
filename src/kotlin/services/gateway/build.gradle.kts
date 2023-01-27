@@ -1,18 +1,16 @@
 plugins {
     kotlin("plugin.spring") version "1.7.21"
+    id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.springframework.boot") version "2.7.6"
 }
 dependencies {
     val coroutinesVersion: String by project
-    val graphqlDgsVersion = "5.5.0"
+    val graphqlDgsVersion = "5.5.1"
     val jacksonKotlinVersion: String by project
-    val springBootVersion: String by project
 
     val protobufVersion: String by project
     val grpcVersion: String by project
     val grpcKotlinVersion: String by project
-
-    val snakeYamlVersion: String by project
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:graphql"))
@@ -31,10 +29,9 @@ dependencies {
     implementation("com.github.javafaker:javafaker:1.+") {
         exclude(module = "org.yaml")
     }
-    implementation("org.yaml:snakeyaml:$snakeYamlVersion")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter:$graphqlDgsVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$graphqlDgsVersion")
-    implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
-    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

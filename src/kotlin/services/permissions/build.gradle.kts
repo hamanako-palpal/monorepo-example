@@ -3,10 +3,10 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
     kotlin("plugin.spring") version "1.7.10"
+    id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.springframework.boot") version "2.7.6"
 }
 dependencies {
-    val springBootVersion: String by project
     val grpcSpringBootVersion: String by project
 
     val grpcKotlinVersion: String by project
@@ -19,15 +19,14 @@ dependencies {
     val kotestExtensionTestContainersVersion: String by project
     val kotestRunnerJunit5Version: String by project
     val jwtVersion: String by project
-    val snakeYamlVersion: String by project
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:shared"))
     testImplementation(project(":libs:shared-test"))
 
-    implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
 
     implementation("com.auth0:java-jwt:$jwtVersion")
@@ -39,9 +38,8 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     implementation("org.jetbrains.exposed:spring-transaction:$exposedVersion")
     implementation("org.postgresql:postgresql:$postgresClientVersion")
-    implementation("org.yaml:snakeyaml:$snakeYamlVersion")
     testImplementation("com.ninja-squad:DbSetup-kotlin:$dbSetupKotlinVersion")
-    testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:$kotestExtensionSpringVersion")
     testImplementation("io.kotest.extensions:kotest-extensions-testcontainers:$kotestExtensionTestContainersVersion")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestRunnerJunit5Version")

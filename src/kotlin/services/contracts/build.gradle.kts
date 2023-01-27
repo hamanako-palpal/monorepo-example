@@ -4,7 +4,6 @@ plugins {
     id("org.springframework.boot") version "2.7.6"
 }
 dependencies {
-    val springBootVersion: String by project
     val grpcSpringBootVersion: String by project
     val grpcKotlinVersion: String by project
     val grpcVersion: String by project
@@ -13,7 +12,6 @@ dependencies {
     val junitJupiterVersion: String by project
     val jwtVersion: String by project
     val kotestRunnerJunit5Version: String by project
-    val snakeYamlVersion: String by project
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:shared"))
@@ -32,7 +30,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     implementation("org.jetbrains.exposed:spring-transaction:$exposedVersion")
-    implementation("org.yaml:snakeyaml:$snakeYamlVersion")
 
     testImplementation("io.kotest:kotest-runner-junit5:$kotestRunnerJunit5Version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")

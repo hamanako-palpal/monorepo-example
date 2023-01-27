@@ -10,10 +10,7 @@ val jacksonKotlinVersion: String by extra("2.14.1")
 
 val javaxAnnotationVersion: String by extra("1.3.2")
 
-val springBootVersion: String by extra("2.7.6")
 val grpcSpringBootVersion: String by extra("4.9.1")
-
-val snakeYamlVersion: String by extra("1.33")
 
 val postgresClientVersion: String by extra("42.5.1")
 
