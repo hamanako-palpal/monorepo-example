@@ -17,7 +17,7 @@ dependencies {
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:shared"))
-    testImplementation(project(":webapps:shared-test"))
+    testImplementation(project(":libs:shared-test"))
 
     implementation("com.auth0:java-jwt:$jwtVersion")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")

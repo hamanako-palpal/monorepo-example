@@ -3,11 +3,11 @@ include(
     "libs:generated:graphql",
     "libs:generated:proto",
     "libs:shared",
+    "libs:shared-test",
     "webapps:gateway",
     "webapps:service-contracts",
     "webapps:service-customers",
-    "webapps:service-permissions",
-    "webapps:shared-test"
+    "webapps:service-permissions"
 )
 pluginManagement {
     repositories {

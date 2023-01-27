@@ -23,7 +23,7 @@ dependencies {
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:shared"))
-    testImplementation(project(":webapps:shared-test"))
+    testImplementation(project(":libs:shared-test"))
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion")
