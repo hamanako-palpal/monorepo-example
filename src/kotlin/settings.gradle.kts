@@ -4,10 +4,10 @@ include(
     "libs:generated:proto",
     "libs:shared",
     "libs:shared-test",
-    "webapps:gateway",
-    "webapps:service-contracts",
-    "webapps:service-customers",
-    "webapps:service-permissions"
+    "services:gateway",
+    "services:contracts",
+    "services:customers",
+    "services:permissions"
 )
 pluginManagement {
     repositories {

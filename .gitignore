@@ -6,8 +6,7 @@
 /src/kotlin/libs/generated/*/src/
 /src/kotlin/libs/*/*/build/
 /src/kotlin/libs/*/build/
-/src/kotlin/webapps/*/build/
-/src/kotlin/webapps/*/*/build/
+/src/kotlin/services/*/build/
 # Ignore Gradle GUI config
 gradle-app.setting
 
