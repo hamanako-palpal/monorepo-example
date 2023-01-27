@@ -16,7 +16,7 @@ dependencies {
 
     implementation(project(":libs:generated:proto"))
     implementation(project(":libs:generated:graphql"))
-    implementation(project(":webapps:shared"))
+    implementation(project(":libs:shared"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}")
 
