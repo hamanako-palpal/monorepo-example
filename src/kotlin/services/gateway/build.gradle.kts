@@ -18,6 +18,9 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${coroutinesVersion}")
 
+    implementation("com.github.javafaker:javafaker:1.+") {
+        exclude(module = "org.yaml")
+    }
     implementation("com.google.protobuf:protobuf-java:${protobufVersion}")
     implementation("com.google.protobuf:protobuf-java-util:${protobufVersion}")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
@@ -25,13 +28,10 @@ dependencies {
     implementation("io.grpc:grpc-protobuf:${grpcVersion}")
     implementation("io.grpc:grpc-stub:${grpcVersion}")
     implementation("io.netty:netty-codec:4.1.86.Final")
-
-    implementation("com.github.javafaker:javafaker:1.+") {
-        exclude(module = "org.yaml")
-    }
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter:$graphqlDgsVersion")
     implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$graphqlDgsVersion")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.yaml:snakeyaml:1.33")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

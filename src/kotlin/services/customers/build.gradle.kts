@@ -24,7 +24,9 @@ dependencies {
     testImplementation(project(":libs:shared-test"))
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
 
     implementation("com.auth0:java-jwt:$jwtVersion")

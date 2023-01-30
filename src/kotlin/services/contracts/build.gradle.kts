@@ -17,12 +17,13 @@ dependencies {
     implementation(project(":libs:shared"))
     testImplementation(project(":libs:shared-test"))
 
-    implementation("com.auth0:java-jwt:$jwtVersion")
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("io.github.lognet:grpc-spring-boot-starter:$grpcSpringBootVersion")
+
+    implementation("com.auth0:java-jwt:$jwtVersion")
     implementation("io.grpc:grpc-kotlin-stub:$grpcKotlinVersion")
     implementation("io.grpc:grpc-protobuf:$grpcVersion")
     implementation("org.postgresql:postgresql:$postgresClientVersion")
