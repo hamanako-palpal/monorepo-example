@@ -6,6 +6,7 @@ import com.pal2hmnk.example.generated.grpc.services.ShopIdsRequest
 import com.pal2hmnk.example.generated.grpc.services.ShopInfo
 import com.pal2hmnk.example.generated.grpc.services.ShopInfos
 import com.pal2hmnk.example.generated.grpc.services.StaffInfo
+import com.pal2hmnk.example.generated.grpc.services.StaffInfos
 import com.pal2hmnk.example.generated.grpc.services.UserInfo
 import com.pal2hmnk.example.customers.domains.values.ShopId as ShopIdDomain
 
@@ -17,6 +18,13 @@ object CustomersAdapter {
         ShopInfos.newBuilder().also {
             shopList.forEachIndexed { idx, shop ->
                 it.setShops(idx, shop.asGRpc())
+            }
+        }.build()
+
+    fun staffsAsGRpc(staffList: List<Staff>): StaffInfos =
+        StaffInfos.newBuilder().also {
+            staffList.forEachIndexed { idx, staff ->
+                it.setStaffs(idx, staff.asGRpc())
             }
         }.build()
 }
@@ -37,5 +45,6 @@ fun Staff.asGRpc(): StaffInfo =
     StaffInfo.newBuilder().also {
         this.shopId?.let { shop -> it.shopId = shop.value }
     }
+        .setUserId(this.userId.value)
         .setRole(this.getRole())
         .build()

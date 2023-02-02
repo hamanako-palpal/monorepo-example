@@ -9,7 +9,16 @@ message ShopInfo {
   string name = 2;
 }
 
+message ShopInfos {
+  repeated ShopInfo shops = 1;
+}
+
 message StaffInfo {
-  int32 shopId = 1;
-  string role = 2;
+  int32 userId = 1;
+  int32 shopId = 2;
+  string role = 3;
+}
+
+message StaffInfos {
+  repeated StaffInfo staffs = 1;
 }

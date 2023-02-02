@@ -41,10 +41,10 @@ class PermissionGRpcService(
         )
             .initial {
                 SecurityToken(
-                    userId = UserId(request.userId),
+                    userId = UserId(request.staffInfo.userId),
                     stuffInfo = request.staffInfo?.let { ShopId(it.shopId) } to
                             request.staffInfo.role?.let { Role(it) },
-                    "example",
+                    clientId = "example",
                 )
             }.run()
 }

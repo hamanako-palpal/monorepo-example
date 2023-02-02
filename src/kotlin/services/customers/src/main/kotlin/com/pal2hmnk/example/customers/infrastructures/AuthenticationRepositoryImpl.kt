@@ -16,7 +16,6 @@ class AuthenticationRepositoryImpl(
     override fun save(staff: Staff): Authentication {
         val response = runBlocking {
             permissionsClient.issue {
-                userId = staff.userId.value
                 staffInfo = staff.asGRpc()
             }
         }
