@@ -3,9 +3,13 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.springframework.boot") version "2.7.6"
 }
+dependencyManagement {
+    imports {
+        mavenBom("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:5.5.1")
+    }
+}
 dependencies {
     val coroutinesVersion: String by project
-    val graphqlDgsVersion = "5.5.1"
     val jacksonKotlinVersion: String by project
 
     val protobufVersion: String by project
@@ -29,8 +33,8 @@ dependencies {
     implementation("io.grpc:grpc-stub:${grpcVersion}")
     implementation("io.netty:netty-codec:4.1.86.Final")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonKotlinVersion")
-    implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter:$graphqlDgsVersion")
-    implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars:$graphqlDgsVersion")
+    implementation("com.netflix.graphql.dgs:graphql-dgs-webflux-starter")
+    implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.yaml:snakeyaml:1.33")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
