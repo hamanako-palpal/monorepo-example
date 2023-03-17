@@ -38,6 +38,8 @@ class SecurityConfiguration {
             .and()
             .csrf()
             .disable()
+            .cors()
+            .disable()
 
             .build()
     }

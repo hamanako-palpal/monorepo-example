@@ -1,24 +1,32 @@
 <script lang="ts">
-  import { signIn, signOut } from "@auth/sveltekit/client"
   import { page } from "$app/stores"
 </script>
 
-<h1>Example Auth </h1>
+<h1>Example Auth</h1>
 <p>
-  <!-- {#if $page.data.session}
-    {#if $page.data.session.user?.image}
-      <span
-        style="background-image: url('{$page.data.session.user.image}')"
-        class="avatar"
-      />
+  {#if $page.data.session}
+    {#if $page.data.session.user}
+      hi {$page.data.session.user.name} :)
     {/if}
-    <span class="signedInText">
-      <small>Signed in as</small><br />
-      <strong>{$page.data.session.user?.name ?? "User"}</strong>
-    </span>
-    <button on:click={() => signOut()} class="button">Sign out</button>
+    zzz..
   {:else}
-    <span class="notSignedInText">You are not signed in</span>
-    <button on:click={() => signIn("github")}>Sign In with GitHub</button>
-  {/if} -->
+  <form>
+    <div>
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" required />
+    </div>
+
+    <div>
+      <label for="email">email</label>
+      <input id="email" name="email" type="text" required />
+    </div>
+  
+    <div>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" required />
+    </div>
+  
+      <button type="submit">Register</button>
+  </form>
+  {/if}
 </p>

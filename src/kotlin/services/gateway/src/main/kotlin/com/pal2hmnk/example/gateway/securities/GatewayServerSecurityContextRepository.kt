@@ -27,6 +27,9 @@ class GatewayServerSecurityContextRepository(
             .flatMap {
                 val token = it.substring(7)
                 val auth = UsernamePasswordAuthenticationToken(token, token)
-                authenticationManager.authenticate(auth).map(::SecurityContextImpl)
+                authenticationManager.authenticate(auth)
             }
+            .defaultIfEmpty(GatewayAnonymousToken())
+            .map(::SecurityContextImpl)
+
 }
